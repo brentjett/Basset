@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="37px" height="37px" viewBox="0 0 37 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12002) - http://www.bohemiancoding.com/sketch -->
+    <title>Mail</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop-Layouts" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Home" sketch:type="MSArtboardGroup" transform="translate(-495.000000, -1424.000000)">
+            <g id="Footer" sketch:type="MSLayerGroup" transform="translate(0.000000, 1290.000000)">
+                <g id="Social" transform="translate(218.000000, 82.000000)" sketch:type="MSShapeGroup">
+                    <g transform="translate(134.000000, 52.000000)" id="Mail">
+                        <g transform="translate(143.000000, 0.000000)">
+                            <path d="M0.138491424,18.1967213 C0.138491424,8.14694914 8.29721361,0 18.3615086,0 C28.4258035,0 36.5845257,8.14694914 36.5845257,18.1967213 C36.5845257,28.2464935 28.4258035,36.3934426 18.3615086,36.3934426 C8.29721361,36.3934426 0.138491424,28.2464935 0.138491424,18.1967213 Z" fill="#DE7137"></path>
+                            <path d="M21.6070333,19.1905053 L29.1147541,24.6119308 L29.1147541,12.1311475 L21.6070333,19.1905053 Z M8.49180328,12.1311475 L8.49180328,24.6119308 L15.999363,19.1897462 L8.49180328,12.1311475 Z M18.8032787,21.8266573 L17.010814,20.1416607 L8.49180328,25.4754098 L29.1147541,25.4754098 L20.595542,20.1416607 L18.8032787,21.8266573 Z M28.4960656,12.1311475 L9.1104918,12.1311475 L18.8032787,19.6857775 L28.4960656,12.1311475 Z" id="Shape" fill="#FFFFFF"></path>
+                            <path d="M36.5845257,18.1967213 C36.5845257,28.2464935 28.4258035,36.3934426 18.3615086,36.3934426 C14.6289,36.3934426 11.1584015,35.272836 8.2690834,33.350208 L29.1495532,3.52980669 C33.658557,6.84236167 36.5845257,12.1783361 36.5845257,18.1967213 Z" id="reflec" fill-opacity="0.08" fill="#000000"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

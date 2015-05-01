@@ -1,0 +1,416 @@
+{
+    "key": "basset_theme_config",
+    "title": "Theme Configuration",
+    "fields": [
+        {
+            "key": "field_551da69d13130",
+            "label": "Theme Support",
+            "name": "",
+            "prefix": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top"
+        },
+        {
+            "key": "field_551daeb959e99",
+            "label": "Title Tag",
+            "name": "title-tag",
+            "prefix": "",
+            "type": "true_false",
+            "instructions": "Enable automatic insertion of the &lt;title&gt; tag into the document &lt;head&gt;",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable",
+            "default_value": 1
+        },
+        {
+            "key": "field_551da6cce95b8",
+            "label": "HTML5 Syntax",
+            "name": "html5_features",
+            "prefix": "",
+            "type": "checkbox",
+            "instructions": "This feature allows the use of HTML5 markup for various components.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "search-form": "Search Forms",
+                "comment-form": "Comment Forms",
+                "comment-list": "Comment Lists",
+                "gallery": "Galleries",
+                "caption": "Captions",
+                "widgets": "Widgets"
+            },
+            "default_value": {
+                "search-form": "search-form"
+            },
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_551da8da0c1ec",
+            "label": "Post Formats",
+            "name": "post-formats",
+            "prefix": "",
+            "type": "checkbox",
+            "instructions": "Enable specific post formats for posts.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "status": "Status",
+                "quote": "Quote",
+                "gallery": "Gallery",
+                "image": "Image",
+                "video": "Video",
+                "audio": "Audio",
+                "link": "Link",
+                "aside": "Aside",
+                "chat": "Chat"
+            },
+            "default_value": {
+                "": ""
+            },
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_551da7ebb7583",
+            "label": "Automatic Feed Links",
+            "name": "automatic-feed-links",
+            "prefix": "",
+            "type": "true_false",
+            "instructions": "This feature enables Automatic Feed Links for post and comment in the head.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable",
+            "default_value": 0
+        },
+        {
+            "key": "field_551dab014a7e8",
+            "label": "Featured Image",
+            "name": "post-thumbnails",
+            "prefix": "",
+            "type": "true_false",
+            "instructions": "This feature enables Post Thumbnails support for a Theme.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable",
+            "default_value": 0
+        },
+        {
+            "key": "field_551dab8a4a7e9",
+            "label": "Include Featured Image on specific Post Types",
+            "name": "include_on_post_types",
+            "prefix": "",
+            "type": "text",
+            "instructions": "You can optionally pass a list of post types for which you want to enable this feature.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_551dab014a7e8",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "post, page, testimonial",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_551db3f2b0dbd",
+            "label": "Background",
+            "name": "background",
+            "prefix": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable",
+            "default_value": 0
+        },
+        {
+            "key": "field_551db44df1999",
+            "label": "Header",
+            "name": "header",
+            "prefix": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable",
+            "default_value": 0
+        },
+        {
+            "key": "field_551db68702f8d",
+            "label": "Nav Menus",
+            "name": "",
+            "prefix": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top"
+        },
+        {
+            "key": "field_551db95221ab8",
+            "label": "Menu Locations",
+            "name": "menu_locations",
+            "prefix": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "Add Menu Location",
+            "sub_fields": [
+                {
+                    "key": "field_551db97528c8e",
+                    "label": "Name",
+                    "name": "label",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_551db95e28c8d",
+                    "label": "Handle",
+                    "name": "handle",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "Lowercase, no spaces",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_551dba03f2ba5",
+            "label": "Sidebars",
+            "name": "",
+            "prefix": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top"
+        },
+        {
+            "key": "field_551dba0af2ba6",
+            "label": "Sidebar Locations",
+            "name": "sidebar_locations",
+            "prefix": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "block",
+            "button_label": "Add Sidebar Location",
+            "sub_fields": [
+                {
+                    "key": "field_551dba0af2ba7",
+                    "label": "Name",
+                    "name": "label",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_551dba0af2ba8",
+                    "label": "Handle",
+                    "name": "handle",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "Lowercase, no spaces",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_551dc15d0fcca",
+                    "label": "Description",
+                    "name": "description",
+                    "prefix": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "wpautop",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_551dc1690fccb",
+                    "label": "Sidebar Class",
+                    "name": "sidebar_class",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1428013427
+}

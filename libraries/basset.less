@@ -1,0 +1,57 @@
+/* Basset Library */
+
+@import "basset/helpers";
+@import "basset/wp-classes";
+@import "basset/grid";
+
+
+
+/* [basset_cta] Shortcode */
+.basset-inline-cta-shortcode() {
+	.basset-inline-cta {
+		display:block;
+		background: #eee;
+		color: #999;
+		padding: 20px;
+		text-align: center;
+		overflow:hidden;
+		margin:30px 0px;
+		
+		a {
+			color:inherit;
+		}
+	}
+}
+
+/* [basset_quote] Shortcode */
+.basset-blockquote-shortcode() {
+	blockquote.basset-quote {
+		font-size: 1.2em;
+		line-height: 1.6em;
+		font-style: italic;
+
+		footer {
+			text-align: right;
+
+			a {
+				color:inherit;
+			}
+
+			&:before {
+				content: "— ";
+			}
+		}
+	}
+}
+
+
+/* Static style for inside the content area */
+.basset-content-component-styles() {
+	.basset-inline-cta-shortcode;
+	.basset-blockquote-shortcode
+}
+
+.basset() {
+	.basset-static-helpers;
+	.wp-generated-classes;
+}

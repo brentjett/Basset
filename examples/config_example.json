@@ -1,0 +1,105 @@
+{
+	"theme_supports" : {
+		"title_tag" : true,
+		"html5" : [
+			"comment-list",
+			"comment-form",
+			"search-form",
+			"gallery",
+			"caption"
+		],
+		"automatic_feed_links" : true,
+		"post_formats" : [
+			"aside",
+			"gallery",
+			"link",
+			"image",
+			"quote",
+			"status",
+			"video",
+			"audio",
+			"chat"
+		],
+		"post_thumbnails" : ["post", "page"],
+		"custom_background" : {
+			"default_color" : "#333",
+			"default_image" : "",
+			"default_repeat" : "",
+			"default_position_x" : "",
+			"default_attachment" : "",
+			"wp_head_callback" : "my_callback",
+			"admin_head_callback" : "my_admin_callback",
+			"admin_preview_callback" : "my_preview_callback"
+		},
+		"custom_header" : {
+			"default_image" : "",
+			"width" : 0,
+			"height" : 0,
+			"flex_width" : false,
+			"flex_height" : false,
+			"uploads" : true,
+			"random_default" : false,
+			"header_text" : true,
+			"default_text_color" : "#aaa",
+			"wp_head_callback" : "my_callback",
+			"admin_head_callback" : "my_admin_callback",
+			"admin_preview_callback" : "my_preview_callback"
+		}
+	},
+	"scripts" : {
+		"jquery" : false,
+		"theme" : {
+			"path" : "libraries/theme.js",
+			"dependancies" : ["jquery"],
+			"version" : false,
+			"in_footer" : false
+		}
+	},
+	"styles" : {
+		"colors" : {
+			"path" : "colors.css"
+		}
+	},
+	"nav_menus" : {
+		"header" : "Header Menu",
+		"footer" : "Footer Menu"
+	},
+	"sidebars" : {
+		"default" : {
+			"name" : "Default Sidebar",
+			"description" : "A sidebar for all pages",
+			"class" : "default-sidebar",
+			"before_title" : "",
+			"after_title" : "",
+			"before_widget" : "",
+			"after_widget" : ""
+		}
+	},
+	"image_sizes" : {
+		"blog-thumb" : {
+			"width" : 670,
+			"height" : 230,
+			"crop" : true
+		},
+		"home-boxes" : {
+			"width" : 320,
+			"height" : 120,
+			"crop" : ["left", "top"]
+		}
+	},
+	"customizer" : {
+		
+	},
+	"meta_tags" : {
+		"chars" : {
+			"charset" : "UTF-8"
+		},
+		"ie-compat" : {
+			"content" : "IE=edge",
+			"http-equiv" : "X-UA-Compatible"
+		},
+		"viewport" : "width=device-width, initial-scale=1.0",
+		"referrer" : "always"
+	},
+	"defaults" : {}
+}

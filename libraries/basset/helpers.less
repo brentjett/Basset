@@ -1,0 +1,63 @@
+@iphone_6_portrait: 375px;
+@iphone_6_landscape: 667px;
+@iphone_6plus_portrait: 414px;
+@iphone_6plus_landscape: 736px;
+
+@ipad_portrait: 768px;
+@ipad_landscape: 1024px;
+
+/* Wordpress Admin Bar - Useful for styling fixed elements while logged in */
+@wp_admin_bar_mobile_height: 46px;
+@wp_admin_bar_desktop_height: 32px;
+@wp_admin_bar_size_change: 780px;
+
+/* Master Index Mixin for all STATIC helpers */
+.basset-static-helpers() {
+	.viewport-fix;
+	.responsive-img;
+}
+
+
+/* Resolve Viewport Bug - Static Mixin */
+.viewport-fix() {
+	@-webkit-viewport   { width: device-width; }
+	@-moz-viewport      { width: device-width; }
+	@-ms-viewport       { width: device-width; }
+	@-o-viewport        { width: device-width; }
+	@viewport           { width: device-width; }
+}
+
+/* Make sure images size responsively - Static Mixin */
+.responsive-img() {
+	img {
+		max-width: 100%;
+		max-height: 100%;
+		height: auto;
+		width: auto;
+	}
+}
+
+/* Border Radius Helper */
+.border-radius(@radius) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+}
+
+/* CSS Transition Helpers */
+.transition(@properties) {
+	-webkit-transition: @properties;
+	-moz-transition: @properties;
+	transition: @properties;
+}
+
+
+/* CSS Transform Helpers */
+.transform(@properties) {
+	-ms-transform: @properties;
+	-webkit-transform: @properties;
+	transform: @properties;
+}
+.scale(@factor) {
+	.transform(scale(@factor));
+}

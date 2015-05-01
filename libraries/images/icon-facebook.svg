@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="37px" height="36px" viewBox="0 0 37 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12002) - http://www.bohemiancoding.com/sketch -->
+    <title>Facebook</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop-Layouts" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Home" sketch:type="MSArtboardGroup" transform="translate(-400.000000, -1425.000000)">
+            <g id="Footer" sketch:type="MSLayerGroup" transform="translate(0.000000, 1290.000000)">
+                <g id="Social" transform="translate(218.000000, 82.000000)" sketch:type="MSShapeGroup">
+                    <g transform="translate(134.000000, 52.000000)" id="Facebook">
+                        <g transform="translate(48.000000, 1.000000)">
+                            <path d="M0.0692457121,18 C0.0692457121,8.05887401 8.2279679,0 18.2922629,0 C28.3565578,0 36.51528,8.05887401 36.51528,18 C36.51528,27.941126 28.3565578,36 18.2922629,36 C8.2279679,36 0.0692457121,27.941126 0.0692457121,18 Z" fill="#3B5998"></path>
+                            <path d="M19.8160565,27.7918038 L19.8160565,17.9988534 L22.5488832,17.9988534 L22.9110417,14.6241485 L19.8160565,14.6241485 L19.8206996,12.9350762 C19.8206996,12.0549012 19.9052419,11.5832833 21.1832437,11.5832833 L22.8916956,11.5832833 L22.8916956,8.20819623 L20.1584821,8.20819623 C16.875453,8.20819623 15.7199119,9.84529119 15.7199119,12.5983701 L15.7199119,14.6245307 L13.673484,14.6245307 L13.673484,17.9992356 L15.7199119,17.9992356 L15.7199119,27.7918038 L19.8160565,27.7918038 Z" id="Path" fill="#FFFFFF"></path>
+                            <path d="M36.51528,18 C36.51528,27.941126 28.3565578,36 18.2922629,36 C14.5596543,36 11.0891557,34.891508 8.19983769,32.9896653 L29.0803075,3.49164662 C33.5893113,6.7683902 36.51528,12.0466784 36.51528,18 Z" id="reflec" fill-opacity="0.08" fill="#000000"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
