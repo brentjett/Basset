@@ -22,7 +22,7 @@ add_action('wp_enqueue_scripts', function() {
 });
 
 add_action('after_setup_theme', function() {
-	//register_nav_menu($handle, $label);
+	register_nav_menu('header', 'Header');
 });
 
 /* Safety Wrapper Function for get_field() */
@@ -38,5 +38,11 @@ function basset_get($key, $type_handle = '', $default_value = '') {
 			return get_post_meta($post->ID, $key);
 		}
 	}
+}
+
+function basset_nav_menu_fallback($args) {
+	?>
+	<div class="nav-menu-placeholder"><a href="/wp-admin/nav-menus.php">Assign Nav Menu to <?=$args['location']?></a></div>
+	<?
 }
 ?>

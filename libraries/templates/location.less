@@ -1,0 +1,73 @@
+/*
+Styles for location.php template
+*/
+@import "basset";
+
+.page-template-location {
+
+	@columns: 12;
+	@column-width: 40;
+	@gutter-width: 30;
+	@total-width: 100%;
+
+	.basset-container {
+		/*.row(@columns);*/
+
+
+		.content-area {
+
+			@media screen and (min-width: @iphone_6plus_landscape) {
+				& {
+					.column(7);
+				}
+			}
+			@media screen and (min-width: 992px) {
+				& {
+					.column(8);
+				}
+			}
+		}
+		.details-area {
+			display: none;
+
+			#location-photo {
+				.column(5);
+				background:#eee;
+
+				@media screen and (min-width: @iphone_6plus_landscape) {
+					& {
+						.column(12);
+						margin-bottom: 20px;
+					}
+				}
+			}
+			.location-details {
+				.column(7);
+
+				.location-phones {
+					margin: 12px 0px;
+				}
+				.location-hours {
+					margin: 12px 0px;
+				}
+
+				@media screen and (min-width: @iphone_6plus_landscape) {
+					& {
+						.column(12);
+					}
+				}
+			}
+
+			@media screen and (min-width: @iphone_6plus_landscape) {
+				& {
+					.column(5);
+				}
+			}
+			@media screen and (min-width: 992px) {
+				& {
+					.column(4);
+				}
+			}
+		}
+	}
+}
