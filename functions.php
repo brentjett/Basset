@@ -18,10 +18,11 @@ if (!defined('DISALLOW_FILE_EDIT')) {
 }
 
 add_action('wp_enqueue_scripts', function() {
-	global $template;
-	if (basename($template) == 'location.php') {
-		wp_enqueue_style('basset', get_template_directory_uri() . '/libraries/location.less');
-	}
+	wp_enqueue_style('basset-layouts', get_template_directory_uri() . '/libraries/layout.less');
+});
+
+add_action('after_setup_theme', function() {
+	//register_nav_menu($handle, $label);
 });
 
 /* Safety Wrapper Function for get_field() */

@@ -40,3 +40,7 @@ Version 0.9.4
 - Added [basset_quote] shortcode & action
 - Added [basset_social_icons] shortcode and action - Need to finish hookups.
 - Removed shortcake support for [basset_phone] - Shortcake is breaking inline shortcodes
+
+May 4, 2015
+Version 0.9.5
+- 

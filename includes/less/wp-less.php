@@ -199,7 +199,6 @@ if ( ! class_exists( 'wp_less' ) ) {
 
 				// initialise the parser
 				$less = new lessc;
-				$less = apply_filters('brj/less_object', $less, $src, $handle);
 
 
 				// If the cache or root path in it are invalid then regenerate

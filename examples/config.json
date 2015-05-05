@@ -9,7 +9,7 @@
 			"caption", 
 			"widgets" 
 		],
-		"post-formats" : [
+		"post_formats" : [
 			"status", 
 			"quote", 
 			"gallery", 

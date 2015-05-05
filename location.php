@@ -5,7 +5,7 @@ Template Name: Location
 get_header(); 
 ?>
 
-<main class="container">
+<main class="basset-container">
 	<div class="details-area">
 		<div id="location-photo" data-aspect-ratio="square">
 			<div>

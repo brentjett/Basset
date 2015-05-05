@@ -30,8 +30,6 @@ add_filter('less_compression', function($compression) {
 // Use for dev/debug
 //add_filter('less_force_compile', __return_true);
 
-add_filter('brj/less_object', function($less, $stylesheet_url, $stylesheet_handle) {
-	return $less;
-}, 10, 3);
 
+//add_filter('less_save_css', function($css_path = '', $file_contents = '') { });
 ?>
