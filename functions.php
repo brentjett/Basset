@@ -45,9 +45,4 @@ function basset_nav_menu_fallback($args) {
 	<div class="nav-menu-placeholder"><a href="/wp-admin/nav-menus.php">Assign Nav Menu to <?=$args['location']?></a></div>
 	<?
 }
-
-add_filter('theme_page_templates', function($page_templates, $theme, $post) {
-
-	return $page_templates;
-}, 10, 3);
 ?>

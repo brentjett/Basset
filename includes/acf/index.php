@@ -18,7 +18,7 @@ if(function_exists('acf_add_options_sub_page')) {
 	    'parent' => 'options-general.php'
 	));
 	acf_add_options_sub_page(array(
-	    'title' => 'Settings',
+	    'title' => 'Theme Settings',
 	    'parent' => 'themes.php'
 	));
 }

@@ -64,7 +64,7 @@ add_action('init', function() {
 			} else {
 				$classes = apply_filters('basset/phone_link_classes', array('phonenumber', 'phonelink'));
 				$class_string = implode(' ', $classes);
-				$href = preg_replace('/\D+/', '', $phone);
+				$href = basset_strip_phone($phone);
 				$phone = "<a href='tel:$href' class='$class_string'>$phone</a>";
 			}
 			return $phone;
@@ -74,11 +74,15 @@ add_action('init', function() {
 	add_action('basset/phone', 'basset_print_phone_shortcode', 10, 3);
 });
 
+function basset_strip_phone($phone = '') {
+	return preg_replace('/\D+/', '', $phone);
+}
+
 // [basset_business] - Return the name of the business
 // [basset_email] - Return a mailto: link for the default email address, including subject, cc, bcc, & body text
 // [basset_hours] - View a list of store hours for business. Args: Heading text
 // [basset_quote] = Insert a blockquote with a citation, source name, source url
-// social icons - DONT USE YOAST
+
 
 // [basset_quote] Shortcode
 add_action('init', function() {
@@ -134,69 +138,62 @@ add_action('init', function() {
 Add support for Wordpress SEO by Yoast plugin features.
 - Use Yoast Social profiles for displaying icons
 */
-
-add_filter('basset/social_urls', function($profiles) {
-	
-	$profiles['facebook']['url'] = 'http://facebook.com';
-	$profiles['twitter']['url'] = 'http://twitter.com';
-	$profiles['youtube']['url'] = 'http://youtube.com';
-	$profiles['instagram']['url'] = 'http://instagram.com';
-	$profiles['pinterest']['url'] = 'http://pinterest.com';
-	$profiles['email']['url'] = 'mailto:info@whatever.com';
-	$profiles['rss']['url'] = '/feed';
-
-	return $profiles;
-});
-
 // Add Social Icons as Action and Shortcode
 add_action('init', function() {
 
+	$icon = apply_filters('basset/social_icons_size', array(
+		'name' => 'basset_social_icon',
+		'width' => 37,
+		'height' => 37,
+		'crop' => true
+	));
+	add_image_size($icon['name'], $icon['width'], $icon['height'], $icon['crop']);
+
 	$details = array(
-		'label' => 'Customer Review',
+		'label' => 'Social Icons',
 		'listItemImage' => 'dashicons-editor-quote',
-		'inner_content' => array(
-			'label' => 'Block Quote'
-		),
-		'attrs' => array(
-			array(
-				'label' => 'Citation',
-				'attr'  => 'cite',
-				'type'  => 'text',
-				'placeholder' => __('Sandy and Rosco, Atlanta,GA', 'basset'),
-				'description' => __('The author or origin of the quote', 'basset'),
-				'meta' => array(
-                	'size' => '80'
-                )
-			),
-			array(
-				'label' => 'Source',
-				'attr'  => 'source',
-				'type'  => 'text',
-				'placeholder' => __('Facebook Review', 'basset'),
-				'description' => __('The publication or website the quote was published on', 'basset'),
-				'meta' => array(
-                	'size' => '80'
-                )
-			)
-		)
+		'attrs' => array()
 	);
 	shortcode_ui_register_for_shortcode('basset_social_icons', $details);
 
 	function basset_print_social_icons($args = array(), $content = '', $tag = 'basset_social_icons') {
-		$services = apply_filters('basset/social_urls', array(
+		$profiles = get_field('basset_profiles', 'option');
+
+		$services = apply_filters('basset/profile_defaults', array(
 			'facebook' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-facebook.svg' ),
 			'twitter' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-twitter.svg' ),
 			'youtube' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-youtube.svg' ),
 			'instagram' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-instagram.svg' ),
-			'pinterest' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-pinterest.svg' )
+			'pinterest' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-pinterest.svg' ),
+			'rss' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-rss.svg' ),
+			'email' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-email.svg' ),
+			'phone' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-phone.svg' ),
 		));
-		if (!empty($services)) {
+		if (!empty($profiles)) {
 			?>
 			<div class="basset-social-icons">
 				<? do_action('basset/before_print_social_icons') ?>
-				<? foreach($services as $handle => $profile) { if ($url = $profile['url']) { ?>
-				<a href="<?=$url?>" data-small-icon="<?=$handle?>" target='_blank'><img src="<?=$profile['icon']?>"></a>
-				<? } } ?>
+				<? 
+				foreach($profiles as $item) { 
+					// If handle
+					if (!$handle = $item['handle']) {
+						$handle = $item['acf_fc_layout'];
+					}
+
+					// If there's no url, don't display item
+					$url = apply_filters('basset/social_icon_url', $item['url'], $handle);
+					if (!$url) continue;
+
+					if (!$icon = $item['icon']['sizes']['basset_social_icon']) {
+						$icon = $services[$handle]['icon'];
+					}
+					if (!$icon) continue;
+
+					?>
+					<a href="<?=$url?>" data-small-icon="<?=$handle?>" target='_blank' title="<?=$item['message']?>"><img src="<?=$icon?>" alt="<?=$item['message']?>"></a>
+					<?
+				} 
+				?>
 				<? do_action('basset/after_print_social_icons') ?>
 			</div>
 			<?
@@ -205,6 +202,20 @@ add_action('init', function() {
 	add_shortcode('basset_social_icons', 'basset_print_social_icons');
 	add_action('basset/social_icons', 'basset_print_social_icons', 10, 3);
 });
+
+add_filter('basset/social_icon_url', function($url, $handle = '') {
+	if ($handle == 'email') {
+		$url = "mailto:$url";
+	}
+	if ($handle == 'phone') {
+		if ($url) $phone_number = "phone_number='$url'";
+		$number = basset_strip_phone(do_shortcode('[basset_phone number_only=true ' . $phone_number . ']'));
+		if ($number) {
+			$url = 'tel:' . $number;
+		}
+	}
+	return $url;
+}, 10, 2);
 
 
 /*

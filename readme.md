@@ -44,3 +44,8 @@ Version 0.9.4
 May 5, 2015
 Version 0.9.6
 - Added base support for template enqueue
+
+May 6, 2015
+Version 0.9.7
+- Comment out template enqueue processor - not ready
+- Add admin support for social icons. See Settings -> Business Information

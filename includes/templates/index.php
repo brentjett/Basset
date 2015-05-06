@@ -1,7 +1,5 @@
 <?php
 
-$template_stack = array();
-
 add_action( 'wp_before_admin_bar_render', function() {
 	global $wp_admin_bar, $template;
 
@@ -14,11 +12,15 @@ add_action( 'wp_before_admin_bar_render', function() {
 		$wp_admin_bar->add_menu( $args );
 	}
 });
+/*
+// Template Enqueue Concept
+// Initial support for wrapper templates and enqueuing scripts and stylesheets from template comments
+
+$template_stack = array();
 
 add_filter('template_include', function($template) {
 
 	$template = basset_enqueue_templates($template);
-
 	return $template;
 });
 
@@ -60,5 +62,5 @@ function basset_enqueue_templates($template) {
 		}
 	}
 }
-
+*/
 ?>
