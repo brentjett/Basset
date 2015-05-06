@@ -49,3 +49,4 @@ May 6, 2015
 Version 0.9.7
 - Comment out template enqueue processor - not ready
 - Add admin support for social icons. See Settings -> Business Information
+- Add template enqueue support (Stylesheets and Scripts) for template and template parts. 

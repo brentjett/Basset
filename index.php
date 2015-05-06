@@ -1,6 +1,7 @@
 <?php 
 /*
-Template Name: Blog (Index)
+Name: Blog (Index)
+Stylesheets: basset-layouts
 */
 get_header() 
 ?>
@@ -17,7 +18,7 @@ get_header()
 					<small><?php the_time('F jS, Y') ?> by <?php the_author_posts_link() ?></small>
 					<? the_excerpt() ?>
 					<p class="postmetadata">Posted in <?php the_category(', '); ?></p>
-					<a href="<? the_permalink() ?>"><?_e('Read More', 'beagle')?> &raquo;</a>
+					<a href="<? the_permalink() ?>"><?_e('Read More &rarr;', 'basset')?> &raquo;</a>
 				</div>
 			</div>
 		</article>
@@ -34,7 +35,7 @@ get_header()
 	<? } else { ?>
 	<div>
 		<div class="pad">
-			<?_e('Sorry! No Posts :(', 'basset') ?>
+			<?_e('Sorry! No Posts Found :(', 'basset') ?>
 		</div>
 	</div>
 	<? } ?>

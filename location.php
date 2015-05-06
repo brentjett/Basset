@@ -1,6 +1,7 @@
 <?php 
 /*
 Template Name: Location
+Stylesheets: basset-layouts
 */
 get_header(); 
 ?>

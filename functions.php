@@ -18,7 +18,8 @@ if (!defined('DISALLOW_FILE_EDIT')) {
 }
 
 add_action('wp_enqueue_scripts', function() {
-	wp_enqueue_style('basset-layouts', get_template_directory_uri() . '/libraries/layout.less');
+	wp_register_style('basset-layouts', get_template_directory_uri() . '/libraries/layout.less');
+	// Stylesheet gets enqueued by templates
 });
 
 add_action('after_setup_theme', function() {
@@ -30,7 +31,7 @@ function basset_get($key, $type_handle = '', $default_value = '') {
 	if (function_exists('get_field')) {
 		return get_field($key, $handle);
 	} else {
-		// ASSUMES POST META - @todo: add support for user, comment, etc... Match ACF signature
+		// ASSUMES POST META or OPTION - @todo: add support for user, comment, etc... Match ACF signature
 		if ($type_handle == 'option' || $type_handle == 'options') {
 			return get_option($key, $default);
 		} else {
