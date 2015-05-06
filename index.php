@@ -1,12 +1,9 @@
 <?php 
 /*
-Template Name: Blog
-Styles: main, another
-Scripts: jquery, main.js
+Template Name: Blog (Index)
 */
-get_header(); 
+get_header() 
 ?>
-
 <main class="basset-container narrow">
 	<h1>Blog</h1>
 
@@ -37,10 +34,9 @@ get_header();
 	<? } else { ?>
 	<div>
 		<div class="pad">
-			Sorry! No Posts :(
+			<?_e('Sorry! No Posts :(', 'basset') ?>
 		</div>
 	</div>
 	<? } ?>
 </main>
-
-<?php get_footer() ?>
+<? get_footer() ?>

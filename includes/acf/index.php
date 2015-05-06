@@ -23,6 +23,19 @@ if(function_exists('acf_add_options_sub_page')) {
 	));
 }
 
+add_action( 'wp_before_admin_bar_render', function() {
+	global $wp_admin_bar;
+
+	$args = array(
+		'id'     => 'basset_business_info',
+		'title'  => 'Business Information',
+		'parent' => 'site-name',
+		'href' => '/wp-admin/options-general.php?page=acf-options-business-information'
+	);
+	$wp_admin_bar->add_menu( $args );
+
+});
+
 // Update config file when settings change (Appearance -> Settings)
 
 // Update every time each field changes - BAD IDEA, DON'T DO THIS!

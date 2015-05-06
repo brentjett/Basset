@@ -7,7 +7,7 @@ require_once 'includes/less/index.php';
 require_once 'includes/theme_config_lib/index.php';
 require_once 'includes/acf/index.php';
 require_once 'includes/components/index.php';
-require_once 'includes/zone_lib/index.php';
+require_once 'includes/templates/index.php';
 
 
 //add_filter('less_force_compile', __return_true);
@@ -18,7 +18,6 @@ if (!defined('DISALLOW_FILE_EDIT')) {
 }
 
 add_action('wp_enqueue_scripts', function() {
-	print "WP ENQUEUE SCRIPTS";
 	wp_enqueue_style('basset-layouts', get_template_directory_uri() . '/libraries/layout.less');
 });
 
@@ -47,15 +46,8 @@ function basset_nav_menu_fallback($args) {
 	<?
 }
 
-add_filter('template_include', function($template) {
-	print "Template Include";
-	$headers = get_file_data($template, array('Template' => 'Template Name', 'Styles' => 'Styles', 'Scripts' => 'Scripts'));
-	if ($headers['Scripts']) {
-		$scripts = explode(' ', $headers['Scripts']);
-		foreach($scripts as $script) {
-			wp_enqueue_scripts($script);
-		}
-	}
-	return $template;
-});
+add_filter('theme_page_templates', function($page_templates, $theme, $post) {
+
+	return $page_templates;
+}, 10, 3);
 ?>
