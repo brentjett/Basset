@@ -18,11 +18,12 @@ if (!defined('DISALLOW_FILE_EDIT')) {
 }
 
 add_action('wp_enqueue_scripts', function() {
+	print "WP ENQUEUE SCRIPTS";
 	wp_enqueue_style('basset-layouts', get_template_directory_uri() . '/libraries/layout.less');
 });
 
 add_action('after_setup_theme', function() {
-	register_nav_menu('header', 'Header');
+	register_nav_menu('basset-header', 'Header');
 });
 
 /* Safety Wrapper Function for get_field() */
@@ -45,4 +46,16 @@ function basset_nav_menu_fallback($args) {
 	<div class="nav-menu-placeholder"><a href="/wp-admin/nav-menus.php">Assign Nav Menu to <?=$args['location']?></a></div>
 	<?
 }
+
+add_filter('template_include', function($template) {
+	print "Template Include";
+	$headers = get_file_data($template, array('Template' => 'Template Name', 'Styles' => 'Styles', 'Scripts' => 'Scripts'));
+	if ($headers['Scripts']) {
+		$scripts = explode(' ', $headers['Scripts']);
+		foreach($scripts as $script) {
+			wp_enqueue_scripts($script);
+		}
+	}
+	return $template;
+});
 ?>

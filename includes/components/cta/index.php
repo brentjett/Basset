@@ -4,6 +4,16 @@
 
 This shortcode is available from the "Add Media" modal dialog when the Shortcake UI plugin is active.
 */
+
+/* 
+// How to add variations 
+add_filter('basset/inline_cta/variations', function($styles) {
+	return array(
+		'blue' => "Blue CTA"
+	);
+});
+*/
+
 add_action('init', function() {
 
 	$shortcode_details = array(
@@ -21,22 +31,84 @@ add_action('init', function() {
                 	'size' => '80'
                 )
             ),
+            array(
+                'label' => 'CSS',
+                'attr'  => 'style',
+                'type'  => 'text',
+                'meta' => array(
+                	'size' => '120'
+                )
+            ),
+            array(
+                'label' => 'Classes',
+                'attr'  => 'class',
+                'type'  => 'text',
+                'meta' => array(
+                	'size' => '80'
+                )
+            )
 		)
 	);
+	$cta_styles = apply_filters('basset/inline_cta/variations', array());
+	if (!empty($cta_styles)) {
+		$options = array(
+			'' => 'Default'
+		);
+		foreach($cta_styles as $handle => $label) {
+			$options[$handle] = $label;
+		}
+		$shortcode_details['attrs'][] = array(
+			'label' => 'Style Variations',
+			'attr'  => 'variation',
+			'type'  => 'select',
+			'options' => $options
+		);
+	}
+
 	add_shortcode('basset_cta', 'basset_print_cta_shortcode');
 	shortcode_ui_register_for_shortcode('basset_cta', $shortcode_details);
 });
 
 function basset_print_cta_shortcode($args, $content = '', $tag) {
 	$defaults = array(
-		'url' => false
+		'link_url' => false,
+		'style' => false,
+		'class' => false,
+		'variation' => false
 	);
 	$args = wp_parse_args($args, $defaults);
 	ob_start();
+
+	// Add style="" attribute
+	$style = '';
+	if ($args['style']) {
+		$style = ' style="' . $args['style'] . '"';
+	}
+
+	// Add class="" attribute
+	$classes = apply_filters('basset/inline_cta/classes', array('basset-inline-cta'));
+	if ($args['variation']) {
+		$classes[] = $args['variation'];
+	}
+	if ($args['class']) {
+		$additional = explode(' ', $args['class']);
+		$classes = array_merge($classes, $additional);
+	}
+	$classes = 'class="' . implode(' ', $classes) . '" ';
+
+	// If URL, render <a> tag, else <div>
+	if ($args['link_url']) {
+		$url = $args['link_url'];
+		$open_tag = "<a href='$url' ";
+		$close_tag = "</a>";
+	} else {
+		$open_tag = "<div ";
+		$close_tag = "</div>";
+	}
 	$content = do_shortcode($content);
-	?>
-	<div class="basset-inline-cta"><?=$content?></div>
-	<?php
+	
+	print $open_tag . $classes . $style . '>' . $content . $close_tag;
+	
 	return ob_get_clean();
 }
 ?>

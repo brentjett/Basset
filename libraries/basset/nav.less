@@ -1,18 +1,19 @@
-
-@primary_color: #13658B; /* Blue */
-@secondary_color: #FFBA00; /* Orange */
-@accent_color: #554938; /* Brown */
-
-@nav_color: #aaa;
-@nav_hover_color: @secondary_color;
-@nav_collapse_trigger_label: "Menu";
-
 nav.horizontal-nav {
 	text-align: right;
 	
 	& > ul {
 		text-align: left;
 		list-style: none;
+
+		/* Truckee Tahoe Spacing */
+		margin: 90px 0px 0px;
+		padding: 0px 0px 20px;
+
+		footer & {
+			margin:0px;
+			padding: 0px;
+			text-align: center;
+		}
 		
 		li {
 			display: block;
@@ -39,7 +40,7 @@ nav.horizontal-nav {
 			
 			&.current-menu-item {
 				& > a {
-					/* Current Menu Link */
+					color: @secondary_color;
 				}
 			}
 
@@ -57,13 +58,14 @@ nav.collapse-nav {
 		content:  @nav_collapse_trigger_label;
 		padding: 10px;
 		display: block;
-		color: @nav_color;
+		color: @secondary_color;
 		cursor: pointer;
 		text-decoration: none;
 	}
 	
 	& > ul {
 		display: none;
+		background: rgba(30, 97, 155, 0.7);
 
 		li {
 			  margin-left: 30px;
@@ -104,6 +106,12 @@ nav.collapse-nav {
 
 				header &.current-menu-item {
 					& > a {
+						background:@nav_hover_color;
+						color:@primary_color;
+						border-top-left-radius:4px;
+						border-top-right-radius: 4px;
+
+						.transition(background .25s);
 					}
 				}
 			}
@@ -147,7 +155,9 @@ nav.collapse-nav {
 				&:hover {
 					a {
 						background:@nav_hover_color;
-						color:@nav_color;
+						color:@primary_color;
+						border-top-left-radius:4px;
+						border-top-right-radius: 4px;
 
 						.transition(background .25s);
 					}
@@ -155,8 +165,11 @@ nav.collapse-nav {
 					ul {
 						opacity: 1;
 
-						border-top: 4px solid @nav_color;
+						border-top: 4px solid @secondary_color;
 						border-radius:4px;
+
+						background: #2068A3;
+						background: @primary_color;
 						box-shadow: rgba(0, 0, 0, 0.3) 1px 10px 16px;
 
 						.transform(translateX(0px));
@@ -175,7 +188,7 @@ nav.collapse-nav {
 								border-radius: 0px;
 
 								&:hover {
-									color:@nav_hover_color;
+									color:@secondary_color;
 								}
 							}
 
