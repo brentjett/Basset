@@ -169,15 +169,22 @@ add_action('init', function() {
 			'email' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-email.svg' ),
 			'phone' => array( 'icon' => get_template_directory_uri() . '/libraries/images/icon-phone.svg' ),
 		));
+
 		if (!empty($profiles)) {
 			?>
 			<div class="basset-social-icons">
 				<? do_action('basset/before_print_social_icons') ?>
 				<? 
 				foreach($profiles as $item) { 
+
 					// If handle
 					if (!$handle = $item['handle']) {
 						$handle = $item['acf_fc_layout'];
+					}
+
+					$target="target='_blank'";
+					if ($handle == 'phone' || $handle == 'email') {
+						$target = null;
 					}
 
 					// If there's no url, don't display item
@@ -190,7 +197,7 @@ add_action('init', function() {
 					if (!$icon) continue;
 
 					?>
-					<a href="<?=$url?>" data-small-icon="<?=$handle?>" target='_blank' title="<?=$item['message']?>"><img src="<?=$icon?>" alt="<?=$item['message']?>"></a>
+					<a href="<?=$url?>" data-small-icon="<?=$handle?>" <?=$target?> title="<?=$item['message']?>"><img src="<?=$icon?>" alt="<?=$item['message']?>"></a>
 					<?
 				} 
 				?>
@@ -205,6 +212,9 @@ add_action('init', function() {
 
 add_filter('basset/social_icon_url', function($url, $handle = '') {
 	if ($handle == 'email') {
+		if (!$url) {
+			$url = get_field('email_address', 'option');
+		}
 		$url = "mailto:$url";
 	}
 	if ($handle == 'phone') {
