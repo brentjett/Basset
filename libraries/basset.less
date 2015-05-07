@@ -1,4 +1,4 @@
-/* Basset Library */
+// Basset Library
 
 @import "basset/helpers";
 @import "basset/wp-classes";
@@ -16,7 +16,7 @@
 		text-align: center;
 		overflow:hidden;
 		margin:30px 0px;
-		
+
 		a {
 			color:inherit;
 		}
@@ -44,11 +44,29 @@
 	}
 }
 
+.basset-location-block() {
+	.basset-location-block {
+		color:@primary_color;
+		background:#eee;
+		padding:10px;
+		.border-radius(4px);
+
+		.details {
+			font-size: .8em;
+			line-height:1.4em;
+
+			.location-address {
+				margin:0px 0px 6px;
+			}
+		}
+	}
+}
 
 /* Static style for inside the content area */
 .basset-content-component-styles() {
 	.basset-inline-cta-shortcode;
-	.basset-blockquote-shortcode
+	.basset-blockquote-shortcode;
+	.basset-location-block;
 }
 
 .basset() {

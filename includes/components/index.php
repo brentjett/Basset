@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once 'cta/index.php';
 //require_once 'messages/index.php';
@@ -16,7 +16,7 @@ add_action('wp_enqueue_scripts', function() {
 
 // Add [basset_phone] shortcode
 add_action('init', function() {
-	
+
 	$phone_shortcode_details = array(
 		'label' => 'Primary Phone Number',
 		'listItemImage' => 'dashicons-phone',
@@ -44,10 +44,10 @@ add_action('init', function() {
 	);
 	// TEMPORARILY DISABLED - Shortcode UI Plugin treats all shortcodes like block elements
 	//shortcode_ui_register_for_shortcode('basset_phone', $phone_shortcode_details);
-	
+
 	function basset_print_phone_shortcode($args, $content = "", $tag = 'basset_phone') {
 		$default_phone = get_field('primary_phone_number', 'option');
-		
+
 		$args = wp_parse_args($args, array(
 			'phone_number' => apply_filters('basset/primary_phone', $default_phone),
 			'disable_link' => false,
@@ -86,7 +86,7 @@ function basset_strip_phone($phone = '') {
 
 // [basset_quote] Shortcode
 add_action('init', function() {
-	
+
 	$quote_shortcode_details = array(
 		'label' => 'Customer Review',
 		'listItemImage' => 'dashicons-editor-quote',
@@ -117,7 +117,7 @@ add_action('init', function() {
 		)
 	);
 	shortcode_ui_register_for_shortcode('basset_quote', $quote_shortcode_details);
-	
+
 	function basset_print_quote_shortcode($args, $content = "", $tag) {
 		ob_start();
 		?>
@@ -174,8 +174,8 @@ add_action('init', function() {
 			?>
 			<div class="basset-social-icons">
 				<? do_action('basset/before_print_social_icons') ?>
-				<? 
-				foreach($profiles as $item) { 
+				<?
+				foreach($profiles as $item) {
 
 					// If handle
 					if (!$handle = $item['handle']) {
@@ -199,7 +199,7 @@ add_action('init', function() {
 					?>
 					<a href="<?=$url?>" data-small-icon="<?=$handle?>" <?=$target?> title="<?=$item['message']?>"><img src="<?=$icon?>" alt="<?=$item['message']?>"></a>
 					<?
-				} 
+				}
 				?>
 				<? do_action('basset/after_print_social_icons') ?>
 			</div>
@@ -245,4 +245,39 @@ function basset_print_footnotes() {
 	}
 }
 add_action('basset/footnotes', 'basset_print_footnotes');
+
+/*
+Mobile Location Block
+*/
+add_action('init', function() {
+
+	function basset_print_location_block($args = array(), $content = '', $tag = '') {
+		ob_start();
+		?>
+		<div class="basset-location-block">
+			<div class="details">
+				<p class="location-address"><?=basset_get('location_address')?></p>
+
+				<?php
+				$phones = basset_get('location_phones');
+				if (!empty($phones)) {
+				?>
+				<div class="location-phones">
+					<? foreach($phones as $phone) {
+						if ($type = $phone['type']) $type = "$type: ";
+					?>
+					<div><strong><?=$type?></strong><?=$phone['number']?></div>
+					<? } ?>
+				</div>
+				<? } ?>
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+	add_shortcode('basset_location_block', 'basset_print_location_block');
+	add_action('basset/location_block', function() {
+		print basset_print_location_block();
+	}, 10, 3);
+});
 ?>

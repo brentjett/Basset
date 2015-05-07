@@ -1,12 +1,12 @@
-<?php 
+<?php
 /*
 Name: Blog (Index)
 Stylesheets: basset-layouts
 */
-get_header() 
+get_header()
 ?>
 <main class="basset-container narrow">
-	<h1>Blog</h1>
+	<h1><?_e('Blog', 'basset')?></h1>
 
 	<? if (have_posts()) { ?>
 		<? while (have_posts()) : the_post(); ?>
@@ -23,7 +23,7 @@ get_header()
 			</div>
 		</article>
 		<? endwhile; ?>
-		
+
 		<?php if ($wp_query->max_num_pages > 1) : ?>
 		  <nav class="post-nav">
 		    <ul class="pager">

@@ -1,26 +1,29 @@
-/////////////////
-// Semantic.gs // for LESS: http://lesscss.org/
-/////////////////
+// Basset Grid
+// Originally from Semantic.gs // for LESS: http://lesscss.org/
+// Rewritten with containers by Brent Jett
 
 // Defaults which you can freely override
-@column-width: 60;
-@gutter-width: 20;
+@total-width:100%;
+@gutter-width: 6%; // 60px default;
 @columns: 12;
 
+@narrow_max_width: @iphone_6plus_landscape;
+@normal_max_width: 920px;
+@wide_max_width: 1100px;
+
+/* Don't need this anymore
 // Utility variable — you should never need to modify this
 @gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
 
 // Set @total-width to 100% for a fluid layout
 @total-width: @gridsystem-width;
+*/
 
-// Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
-// @min-width: 960;
-// @correction: 0.5 / @min-width * 100 * 1%;
 
 // The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
 .clearfix() {
 	*zoom:1;
-	
+
 	&:before,
 	&:after {
 	    content:"";
@@ -40,25 +43,52 @@ body {
 	.clearfix;
 }
 
+.row-container(wide) {
+	.row-container(@wide_max_width);
+}
+.row-container(normal) {
+	.row-container(@normal_max_width);
+}
+.row-container(narrow) {
+	.row-container(@narrow_max_width);
+}
+.row-container(@max_width: auto) {
+
+	display:block;
+	box-sizing:border-box;
+	.clearfix;
+
+	margin-left:auto;
+	margin-right:auto;
+	padding-left: @gutter-width;
+	padding-right: @gutter-width;
+	max-width: @max_width;
+}
+
 .row(@columns:@columns) {
+
 	display: block;
+	box-sizing:border-box;
+	.clearfix;
+
+	margin-left:-@gutter-width;
+	margin-right:-@gutter-width;
+	/* ORIGINAL SPACING
 	width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width);
 	margin: 0 @total-width*(((@gutter-width*.5)/@gridsystem-width)*-1);
-	// *width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width)-@correction;
-	// *margin: 0 @total-width*(((@gutter-width*.5)/@gridsystem-width)*-1)-@correction;
-	.clearfix;
+	*/
 }
 .column(@x,@columns:@columns) {
-	display: inline;
+	@gutter = (@gutter-width * .5);
+	@width = ((100% / @columns) * @x);
+	display: block;
+	box-sizing:border-box;
 	float: left;
+	padding:0px @gutter;
+	width: @width;
+
+	/*
 	width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
-	margin: 0 @total-width*((@gutter-width*.5)/@gridsystem-width);
-	// *width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width)-@correction;
-	// *margin: 0 @total-width*((@gutter-width*.5)/@gridsystem-width)-@correction;
-}
-.push(@offset:1) {
-	margin-left: @total-width*(((@gutter-width+@column-width)*@offset) / @gridsystem-width) + @total-width*((@gutter-width*.5)/@gridsystem-width);
-}
-.pull(@offset:1) {
-	margin-right: @total-width*(((@gutter-width+@column-width)*@offset) / @gridsystem-width) + @total-width*((@gutter-width*.5)/@gridsystem-width);
+	padding: 0 @total-width*((@gutter-width*.5)/@gridsystem-width);
+	*/
 }

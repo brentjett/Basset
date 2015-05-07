@@ -1,13 +1,13 @@
-<?php 
+<?php
 /*
 Name: Default Page
 Stylesheets: basset-layouts
 Scripts: jquery
 */
-get_header(); 
+get_header();
 ?>
 
-<main class="basset-container narrow">
+<main class="basset-container">
 
 	<article <? post_class() ?>>
 	<?php
