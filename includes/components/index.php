@@ -280,4 +280,13 @@ add_action('init', function() {
 		print basset_print_location_block();
 	}, 10, 3);
 });
+
+
+add_action('init', function() {
+
+	function basset_print_section_shortcode($args = array(), $content = '', $tag = '') {
+
+	}
+	add_shortcode('basset_section', 'basset_print_section_shortcode');
+});
 ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // if the config.json file is somewhere other than in the root of the theme, define BASSET_CONFIG_PATH with the path including the filename before including the theme_config_lib index file.
 
@@ -9,8 +9,6 @@ require_once 'includes/acf/index.php';
 require_once 'includes/components/index.php';
 require_once 'includes/templates/index.php';
 
-
-//add_filter('less_force_compile', __return_true);
 
 // Disable Theme & Plugin Editors - Child themes can re-enable it by setting this constant to false
 if (!defined('DISALLOW_FILE_EDIT')) {
@@ -23,7 +21,20 @@ add_action('wp_enqueue_scripts', function() {
 });
 
 add_action('after_setup_theme', function() {
-	register_nav_menu('basset-header', 'Header');
+	add_theme_support('title-tag'); // Support <title> by default
+
+	/* NEED TO TEST THIS
+	if (!function_exists('get_field')) {
+		function get_field($key, $type_handle = '', $default_value = '') {
+			if ($type_handle == 'option' || $type_handle == 'options') {
+				return get_option($key, $default);
+			} else {
+				global $post;
+				return get_post_meta($post->ID, $key);
+			}
+		}
+	}
+	*/
 });
 
 /* Safety Wrapper Function for get_field() */

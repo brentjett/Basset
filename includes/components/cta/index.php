@@ -1,12 +1,12 @@
-<?php 
+<?php
 /*
 [basset_cta] Call-To-Action shortcode.
 
 This shortcode is available from the "Add Media" modal dialog when the Shortcake UI plugin is active.
 */
 
-/* 
-// How to add variations 
+/*
+// How to add variations
 add_filter('basset/inline_cta/variations', function($styles) {
 	return array(
 		'blue' => "Blue CTA"
@@ -106,9 +106,21 @@ function basset_print_cta_shortcode($args, $content = '', $tag) {
 		$close_tag = "</div>";
 	}
 	$content = do_shortcode($content);
-	
+
 	print $open_tag . $classes . $style . '>' . $content . $close_tag;
-	
+
 	return ob_get_clean();
 }
+
+// Add Quicktag
+function basset_add_cta_quicktag() {
+    if (wp_script_is('quicktags')){
+?>
+    <script type="text/javascript">
+    QTags.addButton( 'basset_inline_cta', 'CTA', '[basset_cta]', '[/basset_cta]', 'a', 'Call-to-action', 1 );
+    </script>
+<?php
+    }
+}
+add_action( 'admin_print_footer_scripts', 'basset_add_cta_quicktag' );
 ?>
