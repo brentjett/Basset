@@ -5,6 +5,7 @@ Author: Brent Jett
 */
 
 require_once 'theme_supports.php';
+require_once 'enqueue.php'; // Register/Enqueue Scripts & Stylesheets
 
 // Setup the global var to hold the config object
 add_action('after_setup_theme', function() {
@@ -47,7 +48,8 @@ add_action('basset/theme_config', function($config, $file) {
 	// register custom taxonomies
 
 	add_action('wp_enqueue_scripts', function() use ($config, $file) {
-		do_action('basset/theme_config/stylesheets', $config, $file);
+		// Enqueue/Register stylesheets and scripts
+		do_action('basset/theme_config/styles', $config, $file);
 	}, 10, 2);
 
 	add_action('wp_head', function() use($config, $file) {
@@ -69,27 +71,6 @@ function basset_get_theme_config() {
 	}
 	return $basset_theme_config;
 }
-
-
-
-
-// Enqueue Front-Side Scripts & Stylesheets
-add_action('basset/theme_config/stylesheets', function($config, $file) {
-
-	// Enqueue Scripts
-	if (!empty($config->scripts)) {
-		foreach($config->scripts as $handle => $meta) {
-			basset_enqueue('script', $handle, $meta);
-		}
-	}
-
-	// Enqueue Stylesheets
-	if (!empty($config->styles)) {
-		foreach($config->styles as $handle => $meta) {
-			basset_enqueue('style', $handle, $meta);
-		}
-	}
-}, 10, 2);
 
 // Add Meta Tags To <head>
 add_action('basset/theme_config/meta_tags', function($config, $file) {
@@ -123,25 +104,6 @@ add_action('basset/theme_config/meta_tags', function($config, $file) {
 		print "<!-- End Basset Enqueued Meta Tags -->\n\n";
 	}
 }, 10, 2);
-
-function basset_enqueue($type, $handle, $data = null) {
-	if ($type == 'script') {
-		if (empty($data)) {
-			wp_enqueue_script($handle);
-		} else {
-			$in_footer = null;
-			wp_enqueue_script($handle, get_stylesheet_directory_uri() . '/' . $data->path);
-		}
-	}
-
-	if ($type == 'style') {
-		if (empty($data)) {
-			wp_enqueue_style($handle);
-		} else {
-			wp_enqueue_style($handle, get_stylesheet_directory_uri() . '/' . $data->path);
-		}
-	}
-}
 
 // Setup Nav Menu Locations
 add_action('basset/theme_config/nav_menus', function($config, $file) {
