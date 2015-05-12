@@ -3,6 +3,7 @@
 Template Name: Location
 Stylesheets: basset-layouts
 */
+get_template_part('head');
 get_header();
 ?>
 

@@ -3,6 +3,7 @@
 Name: Default Page
 Stylesheets: basset-layouts
 */
+get_template_part('head');
 get_header();
 ?>
 

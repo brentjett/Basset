@@ -3,7 +3,8 @@
 Name: Blog (Index)
 Stylesheets: basset-layouts
 */
-get_header()
+get_template_part('head');
+get_header();
 ?>
 <main class="basset-container narrow">
 	<h1><?_e('Blog', 'basset')?></h1>

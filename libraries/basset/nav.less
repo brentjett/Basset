@@ -1,134 +1,95 @@
-nav.horizontal-nav {
-	text-align: right;
-	
-	& > ul {
-		text-align: left;
-		list-style: none;
+/*
+Basset Nav Styling Mixins
+*/
 
-		/* Truckee Tahoe Spacing */
-		margin: 90px 0px 0px;
-		padding: 0px 0px 20px;
+// Basset List Nav - Simplest styling, great for mobile menus
+@nav_background_color: #E9E9E9;
+@nav_color: #333;
+@nav_highlight_background_color: #40D278;
+@nav_highlight_color: #ffffff;
+@nav_seperator_color: #C7C7C7;
 
-		footer & {
-			margin:0px;
-			padding: 0px;
-			text-align: center;
-		}
-		
-		li {
-			display: block;
-			margin: 0px;
+.basset-list-nav() {
+	& {
+		.clearfix();
+		background:@nav_background_color;
+		padding:20px 0px;
 
-			&:last-child {
-				border-bottom:none;
-			}
-			
-			a {
-				text-decoration: none;
-				color: @nav_color;
-				font-size: 1em;
-				font-weight: 200;
-				padding: 16px;
-				padding-left:0px;
-				display: block;
-
-				footer & {
-					color: inherit;
-				}
-			}
-
-			
-			&.current-menu-item {
-				& > a {
-					color: @secondary_color;
-				}
-			}
-
-			footer & ul {
-				display: none;
-			}
-		}
-	}
-}
-
-nav.collapse-nav {
-	display: block;
-	
-	a.trigger {
-		content:  @nav_collapse_trigger_label;
-		padding: 10px;
-		display: block;
-		color: @secondary_color;
-		cursor: pointer;
-		text-decoration: none;
-	}
-	
-	& > ul {
-		display: none;
-		background: rgba(30, 97, 155, 0.7);
-
-		li {
-			  margin-left: 30px;
-			  border-bottom: 1px solid rgba(255, 255, 255, 0.38);
-
-			/* Sub Items */
-			ul {
-				padding:0px;
-				z-index: 999;
-
-				li {
-					a {
-						font-size: .8em;
-						padding:6px;
-						padding-left:0px;
-					}
-				}
-			}
-		}
-	}
-}
-
-@media screen and (min-width:@ipad_portrait) {
-	nav.horizontal-nav {
 		ul {
-			text-align: center;
-			margin: 0px;
+			margin:0px;
 			padding:0px;
-			background: none;
-		
+			list-style:none;
+
 			li {
-				display: inline-block;
-				vertical-align: bottom;
+				display:block;
+				border-bottom:1px solid @nav_seperator_color;
+
+				&:last-child {
+					border-bottom:none;
+				}
 
 				a {
-					font-size: .85em;
+					display:block;
+					padding:20px;
+					text-decoration:none;
+					color: @nav_color;
+					font-family:"Open Sans", Helvetica, sans-serif;
+					font-size:1.2em;
+				}
+				&.current-menu-item {
+					& > a {
+						background:@nav_highlight_background_color;
+						color:@nav_highlight_color;
+					}
 				}
 
-				header &.current-menu-item {
-					& > a {
-						background:@nav_hover_color;
-						color:@primary_color;
-						border-top-left-radius:4px;
-						border-top-right-radius: 4px;
 
-						.transition(background .25s);
+				ul {
+
+					li {
+						border-bottom:none;
+						padding-left:20px;
+
+						a {
+							padding:10px 20px;
+							font-size:1em;
+						}
 					}
 				}
 			}
 		}
 	}
-	nav.collapse-nav {
-		a.trigger {
-			display: none;
-		}
-		& > ul {
-			display: block !important;
+}
+
+.basset-horizontal-nav() {
+	& {
+		.clearfix();
+		background:@nav_background_color;
+
+		ul {
+			list-style:none;
+			margin:0px;
+			padding:0px;
+			text-align:center;
 
 			li {
-				border:none;
-				position: relative;
-				margin-left:0px;
+				display:inline-block;
+				margin:0px;
+				padding:0px;
+				position:relative;
 
+				&.current-menu-item {
+					& > a {
+						background:@nav_highlight_background_color;
+						color:@nav_highlight_color;
+
+						&:hover {
+							background:darken(@nav_highlight_background_color, 10%);
+						}
+					}
+				}
+
+				// Nav with subnav
 				&.menu-item-has-children {
 					& > a:after {
 						font-family: "dashicons";
@@ -139,66 +100,39 @@ nav.collapse-nav {
 						height: 18px;
 						margin-top: -8px;
 					}
-				}
 
-				ul {
-					opacity: 0;
-					position: absolute;
-					top: 43px;
-					right:0px;
-					width:200px;
-					margin-left:-15px;
-					padding-bottom:10px;
-					.transition(opacity .5s);
-				}
+					&:hover {
+						ul {
+							display:block;
+							position:absolute;
+							background:@nav_background_color;
 
-				&:hover {
-					a {
-						background:@nav_hover_color;
-						color:@primary_color;
-						border-top-left-radius:4px;
-						border-top-right-radius: 4px;
+							li {
+								display:block;
 
-						.transition(background .25s);
-					}
-
-					ul {
-						opacity: 1;
-
-						border-top: 4px solid @secondary_color;
-						border-radius:4px;
-
-						background: #2068A3;
-						background: @primary_color;
-						box-shadow: rgba(0, 0, 0, 0.3) 1px 10px 16px;
-
-						.transform(translateX(0px));
-
-						li {
-							padding: 0px;
-							display: block;
-							background: none;
-
-							a {
-								font-size: 1em;
-								background: none;
-								color:white;
-								padding: 14px 10px;
-								line-height: 1.1em;
-								border-radius: 0px;
-
-								&:hover {
-									color:@secondary_color;
-								}
-							}
-
-							&:hover {
 								a {
-									background: rgba(255, 255, 255, .1);
+									text-align:left;
 								}
 							}
 						}
 					}
+				}
+
+				a {
+					display:block;
+					padding:16px;
+					text-decoration:none;
+					color: @nav_color;
+					font-family:"Open Sans", Helvetica, sans-serif;
+					font-size:1em;
+
+					&:hover {
+						background-color:rgba(0,0,0,.1);
+					}
+				}
+
+				ul {
+					display:none;
 				}
 			}
 		}
