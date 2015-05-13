@@ -26,4 +26,7 @@ get_header();
 	</article><!-- /.content-area -->
 </main>
 
-<?php get_footer() ?>
+<?
+get_footer();
+get_template_part('foot');
+?>

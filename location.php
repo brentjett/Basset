@@ -62,4 +62,7 @@ get_header();
 	</div>
 </main>
 
-<?php get_footer() ?>
+<?
+get_footer();
+get_template_part('foot');
+?>

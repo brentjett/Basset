@@ -16,7 +16,7 @@ if (!defined('DISALLOW_FILE_EDIT')) {
 }
 
 add_action('wp_enqueue_scripts', function() {
-	wp_register_style('basset-layouts', get_template_directory_uri() . '/libraries/layout.less');
+	wp_register_style('basset-layouts', get_template_directory_uri() . '/libraries/layout.less', array('open-sans'));
 	// Stylesheet gets enqueued by templates
 });
 

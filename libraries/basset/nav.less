@@ -64,7 +64,6 @@ Basset Nav Styling Mixins
 .basset-horizontal-nav() {
 	& {
 		.clearfix();
-		background:@nav_background_color;
 
 		ul {
 			list-style:none;
@@ -80,11 +79,10 @@ Basset Nav Styling Mixins
 
 				&.current-menu-item {
 					& > a {
-						background:@nav_highlight_background_color;
-						color:@nav_highlight_color;
+						color:@nav_highlight_background_color;
 
 						&:hover {
-							background:darken(@nav_highlight_background_color, 10%);
+							color:darken(@nav_highlight_background_color, 10%);
 						}
 					}
 				}
@@ -120,7 +118,7 @@ Basset Nav Styling Mixins
 
 				a {
 					display:block;
-					padding:16px;
+					padding:10px 14px;
 					text-decoration:none;
 					color: @nav_color;
 					font-family:"Open Sans", Helvetica, sans-serif;
@@ -137,4 +135,28 @@ Basset Nav Styling Mixins
 			}
 		}
 	}
+}
+.basset-horizontal-nav-filled() {
+	.basset-horizontal-nav;
+
+	& {
+		background:@nav_background_color;
+
+		ul {
+			li {
+				&.current-menu-item {
+					& > a {
+						background:@nav_highlight_background_color;
+						color:@nav_highlight_color;
+
+						&:hover {
+							color:@nav_highlight_color;
+							background:darken(@nav_highlight_background_color, 10%);
+						}
+					}
+				}
+			}
+		}
+	}
+
 }

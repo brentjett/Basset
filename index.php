@@ -41,4 +41,7 @@ get_header();
 	</div>
 	<? } ?>
 </main>
-<? get_footer() ?>
+<?
+get_footer();
+get_template_part('foot');
+?>
