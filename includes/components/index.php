@@ -103,29 +103,52 @@ add_action('init', function() {
 				'meta' => array(
                 	'size' => '80'
                 )
-			),
-			array(
-				'label' => 'Source',
-				'attr'  => 'source',
-				'type'  => 'text',
-				'placeholder' => __('Facebook Review', 'basset'),
-				'description' => __('The publication or website the quote was published on', 'basset'),
-				'meta' => array(
-                	'size' => '80'
-                )
 			)
 		)
 	);
+
+	$variations = apply_filters('basset/quote/variations', array());
+	if (!empty($variations)) {
+		$options = array(
+			'' => 'Default'
+		);
+		foreach($variations as $handle => $label) {
+			$options[$handle] = $label;
+		}
+		$quote_shortcode_details['attrs'][] = array(
+			'label' => 'Style Variations',
+			'attr'  => 'variation',
+			'type'  => 'select',
+			'options' => $options,
+			'meta' => array(
+				'size' => 80
+			)
+		);
+	}
 	shortcode_ui_register_for_shortcode('basset_quote', $quote_shortcode_details);
 
 	function basset_print_quote_shortcode($args, $content = "", $tag) {
+
+		// Add class="" attribute
+		$classes = apply_filters('basset/quote/classes', array('basset-quote'));
+		if ($args['variation']) {
+			$classes[] = $args['variation'];
+		}
+		if ($args['class']) {
+			$additional = explode(' ', $args['class']);
+			$classes = array_merge($classes, $additional);
+		}
+		$classes = 'class="' . implode(' ', $classes) . '" ';
+
 		ob_start();
 		?>
-		<blockquote class="basset-quote">
-			<div><?=$content?></div>
-			<? if ($args['cite']) { ?>
-			<footer><?=$args['cite']?></footer>
-			<? } ?>
+		<blockquote <?=$classes?>>
+			<div class="inner">
+				<div><?=$content?></div>
+				<? if ($args['cite']) { ?>
+				<footer><?=$args['cite']?></footer>
+				<? } ?>
+			</div>
 		</blockquote>
 		<?php
 		return ob_get_clean();
@@ -133,11 +156,12 @@ add_action('init', function() {
 	add_shortcode('basset_quote', 'basset_print_quote_shortcode');
 });
 
+add_filter('basset/quote/variations', function($variations) {
+	$variations['full-width-section'] = "Full Width";
+	return $variations;
+});
 
-/*
-Add support for Wordpress SEO by Yoast plugin features.
-- Use Yoast Social profiles for displaying icons
-*/
+
 // Add Social Icons as Action and Shortcode
 add_action('init', function() {
 

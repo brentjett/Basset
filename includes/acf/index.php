@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Custom JSON Load
 add_filter('acf/settings/load_json', function($paths) {
@@ -17,10 +17,12 @@ if(function_exists('acf_add_options_sub_page')) {
 	    'title' => 'Business Information',
 	    'parent' => 'options-general.php'
 	));
+	/* Unused
 	acf_add_options_sub_page(array(
 	    'title' => 'Theme Settings',
 	    'parent' => 'themes.php'
 	));
+	*/
 }
 
 add_action( 'wp_before_admin_bar_render', function() {
@@ -58,7 +60,7 @@ add_action('acf/save_post', function($post_id) {
 		            [4] => caption
 		            [5] => widgets
 		        )
-		
+
 		    [field_551da8da0c1ec] => Array
 		        (
 		            [0] => status
@@ -66,7 +68,7 @@ add_action('acf/save_post', function($post_id) {
 		            [2] => gallery
 		            [3] => chat
 		        )
-		
+
 		    [field_551da7ebb7583] => 0
 		    [field_551dab014a7e8] => 0
 		    [field_551db3f2b0dbd] => 0
@@ -78,16 +80,16 @@ add_action('acf/save_post', function($post_id) {
 		                    [field_551db97528c8e] => Header
 		                    [field_551db95e28c8d] => header
 		                )
-		
+
 		            [1] => Array
 		                (
 		                    [field_551db97528c8e] => Footer
 		                    [field_551db95e28c8d] => footer
 		                )
-		
+
 		        )
-		
-		    [field_551dba0af2ba6] => 
+
+		    [field_551dba0af2ba6] =>
 		)
 		*/
 	}

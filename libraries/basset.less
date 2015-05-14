@@ -4,6 +4,7 @@
 @import "basset/wp-classes";
 @import "basset/grid";
 @import "basset/nav";
+@import "basset/sections"
 
 
 
@@ -30,6 +31,7 @@
 		font-size: 1.2em;
 		line-height: 1.6em;
 		font-style: italic;
+		background:#eee;
 
 		footer {
 			text-align: right;
@@ -42,12 +44,21 @@
 				content: "— ";
 			}
 		}
+
+		&.full-width-section {
+			.basset-section(full-width);
+
+			& > * {
+				padding-top:30px;
+				padding-bottom:30px;
+			}
+		}
 	}
 }
 
 .basset-location-block() {
 	.basset-location-block {
-		color:@primary_color;
+		color:#333;
 		background:#F0EDE5;
 		padding:10px;
 		.border-radius(4px);

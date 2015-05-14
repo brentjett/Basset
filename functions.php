@@ -36,6 +36,9 @@ add_action('after_setup_theme', function() {
 	}
 	*/
 });
+add_action('admin_init', function() {
+	add_editor_style('libraries/editor.less');
+});
 
 /* Safety Wrapper Function for get_field() */
 function basset_get($key, $type_handle = '', $default_value = '') {
