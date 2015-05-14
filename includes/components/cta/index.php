@@ -52,7 +52,7 @@ add_action('init', function() {
 	$cta_styles = apply_filters('basset/inline_cta/variations', array());
 	if (!empty($cta_styles)) {
 		$options = array(
-			'' => 'Default'
+			'default' => 'Default'
 		);
 		foreach($cta_styles as $handle => $label) {
 			$options[$handle] = $label;

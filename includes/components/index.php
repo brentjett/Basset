@@ -88,7 +88,7 @@ function basset_strip_phone($phone = '') {
 add_action('init', function() {
 
 	$quote_shortcode_details = array(
-		'label' => 'Customer Review',
+		'label' => 'Block Quote',
 		'listItemImage' => 'dashicons-editor-quote',
 		'inner_content' => array(
 			'label' => 'Block Quote'
@@ -110,7 +110,7 @@ add_action('init', function() {
 	$variations = apply_filters('basset/quote/variations', array());
 	if (!empty($variations)) {
 		$options = array(
-			'' => 'Default'
+			'default' => 'Default'
 		);
 		foreach($variations as $handle => $label) {
 			$options[$handle] = $label;
@@ -120,9 +120,9 @@ add_action('init', function() {
 			'attr'  => 'variation',
 			'type'  => 'select',
 			'options' => $options,
-			'meta' => array(
+			/*'meta' => array(
 				'size' => 80
-			)
+			)*/
 		);
 	}
 	shortcode_ui_register_for_shortcode('basset_quote', $quote_shortcode_details);
@@ -157,7 +157,7 @@ add_action('init', function() {
 });
 
 add_filter('basset/quote/variations', function($variations) {
-	$variations['full-width-section'] = "Full Width";
+	$variations['full-width-section'] = "Full Width Section";
 	return $variations;
 });
 
