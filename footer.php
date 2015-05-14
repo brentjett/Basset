@@ -1,1 +1,1 @@
-<?php get_template_part('foot') ?>
+<? do_action('basset/footer') ?>
