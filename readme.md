@@ -5,9 +5,15 @@ This is a parent theme for WordPress that adds quick configuration and a built-i
 **Requires at least:** WordPress 4.0  
 **Tested On:** 4.2.2
 
-See [wiki](https://github.com/brentjett/Basset/wiki) for usage documentation.
+See [wiki](https://github.com/brentjett/Basset/wiki) for usage documentation. See [changelog](https://github.com/brentjett/Basset/blob/master/changelog.md) for version details
 
-See [changelog](https://github.com/brentjett/Basset/blob/master/changelog.md) for version details
+## Requirements
+The basset theme requires two plugins for full functionality.
+
+* Shortcake (Shortcode UI) - https://wordpress.org/plugins/shortcode-ui/
+* Advanced Custom Fields v5+ - http://www.advancedcustomfields.com/
+
+While the theme will activate without these plugins present and active, none of the admin pages or metaboxes will be available no will the shortcodes render their views in the editor.
 
 ## Configuration
 The basset theme offers the option to use JSON to configure your WordPress child theme rather than putting logical code into your functions.php file. By default, Basset looks for a file in the root of your child theme called config.json. The format of that file looks like this:
