@@ -2,6 +2,7 @@
 
 // if the config.json file is somewhere other than in the root of the theme, define BASSET_CONFIG_PATH with the path including the filename before including the theme_config_lib index file.
 
+require_once 'includes/required_plugins/index.php';
 require_once 'includes/updater/index.php';
 require_once 'includes/less/index.php';
 require_once 'includes/theme_config_lib/index.php';
