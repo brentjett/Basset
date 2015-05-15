@@ -13,7 +13,7 @@ The basset theme requires two plugins for full functionality.
 * Shortcake (Shortcode UI) - https://wordpress.org/plugins/shortcode-ui/
 * Advanced Custom Fields v5+ - http://www.advancedcustomfields.com/
 
-While the theme will activate without these plugins present and active, none of the admin pages or metaboxes will be available no will the shortcodes render their views in the editor.
+While the theme will activate without these plugins present and active, none of the admin pages or metaboxes will be available no will the shortcodes render their views in the editor. Basset will prompt you if you have not installed or activated the Shortcode UI plugin and you can do so automatically. Unfortunately, because the ACF is a premium plugin, it isn't able to prompt you to install it at this time.
 
 ## Configuration
 The basset theme offers the option to use JSON to configure your WordPress child theme rather than putting logical code into your functions.php file. By default, Basset looks for a file in the root of your child theme called config.json. The format of that file looks like this:
