@@ -1,5 +1,11 @@
-# Basset Foundation Theme
-This is a parent theme for WordPress that adds quick json configuration and a built-in LESS compiler.
+# Changelog
+
+
+## 0.9.9 (5-15-2015)
+* Add TGM Activation library support for Shortcode UI Plugin. ACF not yet included.
+
+---
+
 
 April 26
 Version 0.6
@@ -56,7 +62,3 @@ Version 0.9.8
 - Numerous changes since 0.9.7
 - Intrduce sections api - Allows full width sections inside page content.
 - Added full-width section support to blockquote shortcode.
-
-May 15, 2015
-Version 0.9.9
-- Add TGM Activation library support for Shortcode UI Plugin. ACF not yet included.
