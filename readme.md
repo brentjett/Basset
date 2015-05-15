@@ -58,3 +58,5 @@ The basset theme offers the option to use JSON to configure your WordPress child
 	}
 }
 ```
+
+See [Configuration](https://github.com/brentjett/Basset/wiki/Configuration) for full documentation on things that can be configured with json.
