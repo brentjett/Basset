@@ -1,17 +1,7 @@
 <?php
 
+// Inline Call-to-Action Component
 require_once 'cta/index.php';
-//require_once 'messages/index.php';
-
-
-/* Include styling in editor */
-add_action('admin_init', function() {
-	//add_editor_style(...);
-});
-add_action('wp_enqueue_scripts', function() {
-	//wp_enqueue_style('basset-cta', get_template_directory_uri() . '/includes/components/cta/cta.less');
-});
-
 
 
 // Add [basset_phone] shortcode
@@ -43,7 +33,9 @@ add_action('init', function() {
 		)
 	);
 	// TEMPORARILY DISABLED - Shortcode UI Plugin treats all shortcodes like block elements
+	// if (function_exists('shortcode_ui_register_for_shortcode')) {
 	//shortcode_ui_register_for_shortcode('basset_phone', $phone_shortcode_details);
+	// }
 
 	function basset_print_phone_shortcode($args, $content = "", $tag = 'basset_phone') {
 		$default_phone = get_field('primary_phone_number', 'option');
@@ -125,7 +117,9 @@ add_action('init', function() {
 			)*/
 		);
 	}
-	shortcode_ui_register_for_shortcode('basset_quote', $quote_shortcode_details);
+	if (function_exists('shortcode_ui_register_for_shortcode')) {
+		shortcode_ui_register_for_shortcode('basset_quote', $quote_shortcode_details);
+	}
 
 	function basset_print_quote_shortcode($args, $content = "", $tag) {
 
@@ -178,7 +172,9 @@ add_action('init', function() {
 		'listItemImage' => 'dashicons-editor-quote',
 		'attrs' => array()
 	);
-	shortcode_ui_register_for_shortcode('basset_social_icons', $details);
+	if (function_exists('shortcode_ui_register_for_shortcode')) {
+		shortcode_ui_register_for_shortcode('basset_social_icons', $details);
+	}
 
 	function basset_print_social_icons($args = array(), $content = '', $tag = 'basset_social_icons') {
 		$profiles = get_field('basset_profiles', 'option');

@@ -66,7 +66,9 @@ add_action('init', function() {
 	}
 
 	add_shortcode('basset_cta', 'basset_print_cta_shortcode');
-	shortcode_ui_register_for_shortcode('basset_cta', $shortcode_details);
+	if (function_exists('shortcode_ui_register_for_shortcode')) {
+		shortcode_ui_register_for_shortcode('basset_cta', $shortcode_details);
+	}
 });
 
 function basset_print_cta_shortcode($args, $content = '', $tag) {
