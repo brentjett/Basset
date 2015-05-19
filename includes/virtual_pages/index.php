@@ -117,7 +117,7 @@ add_action('basset/styleguide/utility_bar', function() {
     <div id="basset-styleguide-utility-bar">
         <div>Enqueued Stylesheets</div>
         <?
-        if (!empty(basset_enqueued_styles)) {
+        if (!empty($basset_enqueued_styles)) {
             foreach($basset_enqueued_styles as $style) {
                 print "<div><input value='$style' type='checkbox' checked> $style</div>";
             }
