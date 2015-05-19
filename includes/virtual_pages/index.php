@@ -112,14 +112,17 @@ add_action( 'admin_bar_menu', function($wp_admin_bar) {
 }, 999 );
 
 add_action('basset/styleguide/utility_bar', function() {
-    global $basset_enqueued_styles;
+    global $basset_enqueued_styles, $basset_registered_styles;
     ?>
     <div id="basset-styleguide-utility-bar">
         <div>Enqueued Stylesheets</div>
         <?
         if (!empty($basset_enqueued_styles)) {
             foreach($basset_enqueued_styles as $style) {
-                print "<div><input value='$style' type='checkbox' checked> $style</div>";
+                $stylesheet = $basset_registered_styles[$style];
+                $url = $stylesheet->src;
+
+                print "<div><input value='$style' type='checkbox' checked> <a href='$url' target='_blank'>$style</a></div>";
             }
         }
         ?>
