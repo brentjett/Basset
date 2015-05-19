@@ -11,9 +11,7 @@ get_header();
 	<div class="layout-row">
 		<div class="details-area">
 			<div id="location-photo" data-aspect-ratio="square">
-				<div>
-
-				</div>
+				<div></div>
 			</div>
 			<div class="location-details">
 				<div class="location-name"><?=basset_get('location_name')?></div>
@@ -52,7 +50,9 @@ get_header();
 		    if ( have_posts() ) :
 		        while ( have_posts() ) :
 		            the_post();
-		            print "<h1>" . get_the_title() . "</h1>";
+					if (apply_filters('basset/show_title', true)) {
+		            	print "<h1>" . get_the_title() . "</h1>";
+					}
 					do_action('basset/location_block');
 		           	the_content();
 		        endwhile; // end while

@@ -14,7 +14,9 @@ get_header();
 		    if ( have_posts() ) :
 		        while ( have_posts() ) :
 		            the_post();
-		            print "<h1>" . get_the_title() . "</h1>";
+					if (apply_filters('basset/show_title', true)) {
+		            	print "<h1>" . get_the_title() . "</h1>";
+					}
 		            do_action('basset/after_page_title');
 
 		            do_action('basset/before_page_content');

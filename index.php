@@ -7,7 +7,11 @@ get_template_part('head');
 get_header();
 ?>
 <main class="basset-container narrow">
-	<h1><?_e('Blog', 'basset')?></h1>
+	<?
+	if (apply_filters('basset/show_title', true)) {
+		print "<h1>" . _e('Blog', 'basset') . "</h1>";
+	}
+	?>
 
 	<? if (have_posts()) { ?>
 		<? while (have_posts()) : the_post(); ?>
