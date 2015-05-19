@@ -211,9 +211,12 @@ add_action('init', function() {
 					$url = apply_filters('basset/social_icon_url', $item['url'], $handle);
 					if (!$url) continue;
 
-					if (!$icon = $item['icon']['sizes']['basset_social_icon']) {
+					if ($item['icon']) {
+						$icon = $item['icon']['sizes']['basset_social_icon'];
+					} else {
 						$icon = $services[$handle]['icon'];
 					}
+
 					if (!$icon) continue;
 
 					?>

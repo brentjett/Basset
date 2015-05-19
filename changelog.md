@@ -1,6 +1,10 @@
 # Changelog
 
 
+## 0.9.10 (5-18-2015)
+* Introduce styleguide static pages
+* Enqueue content.less by default
+
 ## 0.9.9 (5-15-2015)
 * Add TGM Activation library support for Shortcode UI Plugin. ACF not yet included.
 
