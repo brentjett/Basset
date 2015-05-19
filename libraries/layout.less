@@ -1,7 +1,6 @@
 /* Basset Layouts */
 
 @import 'basset';
-@import 'templates/location';
 
 body {
 	margin:0px;
@@ -11,7 +10,83 @@ body {
 	.row-container(normal);
 }
 
-footer {
-	padding:30px 0px;
-	text-align: center;
+body.page-template-location {
+
+	main.basset-container {
+		.row-container(wide);
+
+		.layout-row {
+			.row();
+
+			.content-area {
+				.column(12);
+
+				@media screen and (min-width: @iphone_6plus_landscape) {
+					& {
+						.column(7);
+
+						.basset-location-block {
+							display:none;
+						}
+					}
+				}
+				@media screen and (min-width: 992px) {
+					& {
+						.column(8);
+					}
+				}
+			}
+			.details-area {
+				display: none;
+
+				#location-photo {
+					.column(5);
+					background:#eee;
+
+					@media screen and (min-width: @iphone_6plus_landscape) {
+						& {
+							.column(12);
+							margin-bottom: 20px;
+						}
+					}
+				}
+				.location-details {
+					.column(7);
+
+					.location-phones {
+						margin: 12px 0px;
+					}
+					.location-hours {
+						margin: 12px 0px;
+					}
+
+					@media screen and (min-width: @iphone_6plus_landscape) {
+						& {
+							.column(12);
+						}
+					}
+				}
+
+				/* .details-area */
+				@media screen and (min-width: @iphone_6plus_landscape) {
+					& {
+						display: block;
+						.column(5);
+						padding-top:27px;
+					}
+				}
+				@media screen and (min-width: 992px) {
+					& {
+						.column(4);
+						padding-top:27px;
+					}
+				}
+			}
+		}
+	}
+
+	& > footer {
+		padding:30px 0px;
+		text-align: center;
+	}
 }
