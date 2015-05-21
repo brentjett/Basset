@@ -52,6 +52,10 @@ add_action('basset/theme_config', function($config, $file) {
 		do_action('basset/theme_config/styles', $config, $file);
 	}, 10, 2);
 
+	add_action('admin_init', function() use ($config, $file) {
+		do_action('basset/theme_config/editor_styles', $config, $file);
+	});
+
 	add_action('wp_head', function() use($config, $file) {
 		do_action('basset/theme_config/meta_tags', $config, $file);
 	}, 10, 2);
@@ -116,9 +120,8 @@ add_action('basset/theme_config/nav_menus', function($config, $file) {
 }, 10, 2);
 
 
-
-
 // Setup Customizer Fields
+/*
 add_action('customize_register', function($wp_customize) {
 
 	$config = basset_get_theme_config();
@@ -126,5 +129,5 @@ add_action('customize_register', function($wp_customize) {
 	// loop over customizer config and setup fields.
 
 });
-
+*/
 ?>

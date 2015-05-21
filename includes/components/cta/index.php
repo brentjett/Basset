@@ -73,10 +73,10 @@ add_action('init', function() {
 
 function basset_print_cta_shortcode($args, $content = '', $tag) {
 	$defaults = array(
-		'link_url' => false,
-		'style' => false,
-		'class' => false,
-		'variation' => false
+		'link_url' => null,
+		'style' => null,
+		'class' => null,
+		'variation' => null
 	);
 	$args = wp_parse_args($args, $defaults);
 	ob_start();

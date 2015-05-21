@@ -75,6 +75,16 @@ function basset_enqueue($action = "enqueue", $type = 'style', $handle, $data = n
     }
 }
 
+// Enqueue editor stylesheets
+add_action('basset/theme_config/editor_styles', function($config, $file) {
+    $styles = $config->editor_styles;
+    if (!empty($styles)) {
+        foreach($styles as $style) {
+            add_editor_style($style);
+        }
+    }
+}, 10, 2);
+
 function basset_path_is_external($path) {
     $path_data = parse_url($path);
     if ($path_data['scheme'] == 'http' || $path_data['scheme'] == 'https') return true; // Scheme supports http or https, not //
