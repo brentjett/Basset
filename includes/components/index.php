@@ -125,10 +125,10 @@ add_action('init', function() {
 
 		// Add class="" attribute
 		$classes = apply_filters('basset/quote/classes', array('basset-quote'));
-		if ($args['variation']) {
+		if (isset($args['variation'])) {
 			$classes[] = $args['variation'];
 		}
-		if ($args['class']) {
+		if (isset($args['class'])) {
 			$additional = explode(' ', $args['class']);
 			$classes = array_merge($classes, $additional);
 		}
@@ -139,7 +139,7 @@ add_action('init', function() {
 		<blockquote <?=$classes?>>
 			<div class="inner">
 				<div><?=$content?></div>
-				<? if ($args['cite']) { ?>
+				<? if (isset($args['cite'])) { ?>
 				<footer><?=$args['cite']?></footer>
 				<? } ?>
 			</div>

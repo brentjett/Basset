@@ -20,14 +20,14 @@ if (!defined('DISALLOW_FILE_EDIT')) {
 
 add_action('wp_enqueue_scripts', function() {
 	// Layout.less is registered and enqueued by templates
-	wp_register_style('basset-layouts', get_template_directory_uri() . '/libraries/layout.less', array('open-sans', 'dashicons'));
+	wp_register_style('basset-layouts', get_template_directory_uri() . '/libraries/basset-layout.less', array('open-sans', 'dashicons'));
 
 	// Content.less is enqueued in both the front side and the editor
-	wp_enqueue_style('basset-content', get_template_directory_uri() . '/libraries/content.less', array('open-sans'));
+	wp_enqueue_style('basset-content', get_template_directory_uri() . '/libraries/basset-content.less', array('open-sans'));
 });
 
 add_action('admin_init', function() {
-	add_editor_style('libraries/content.less');
+	add_editor_style('libraries/basset-content.less');
 });
 
 add_action('after_setup_theme', function() {

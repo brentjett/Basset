@@ -83,23 +83,23 @@ function basset_print_cta_shortcode($args, $content = '', $tag) {
 
 	// Add style="" attribute
 	$style = '';
-	if ($args['style']) {
+	if (isset($args['style'])) {
 		$style = ' style="' . $args['style'] . '"';
 	}
 
 	// Add class="" attribute
 	$classes = apply_filters('basset/inline_cta/classes', array('basset-inline-cta'));
-	if ($args['variation']) {
+	if (isset($args['variation'])) {
 		$classes[] = $args['variation'];
 	}
-	if ($args['class']) {
+	if (isset($args['class'])) {
 		$additional = explode(' ', $args['class']);
 		$classes = array_merge($classes, $additional);
 	}
 	$classes = 'class="' . implode(' ', $classes) . '" ';
 
 	// If URL, render <a> tag, else <div>
-	if ($args['link_url']) {
+	if (isset($args['link_url'])) {
 		$url = $args['link_url'];
 		$open_tag = "<a href='$url' ";
 		$close_tag = "</a>";
