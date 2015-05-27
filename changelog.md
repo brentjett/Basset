@@ -1,6 +1,11 @@
 # Changelog
 
 
+## 0.9.11
+* Updates to default less variables
+* Add small [basset_social_icons] style changes
+* Enhance location template (add support for featured image)
+
 ## 0.9.10 (5-18-2015)
 * Introduce styleguide static pages
 * Enqueue content.less by default

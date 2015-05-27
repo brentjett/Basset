@@ -23,7 +23,8 @@ add_action('wp_enqueue_scripts', function() {
 	wp_register_style('basset-layouts', get_template_directory_uri() . '/libraries/basset-layout.less', array('open-sans', 'dashicons'));
 
 	// Content.less is enqueued in both the front side and the editor
-	wp_enqueue_style('basset-content', get_template_directory_uri() . '/libraries/basset-content.less', array('open-sans'));
+	wp_enqueue_style('basset-content', get_template_directory_uri() . '/libraries/basset-content.less', array('open-sans', 'dashicons'));
+	wp_enqueue_script('basset-content', get_template_directory_uri() . '/libraries/basset-content.js', array('jquery'));
 });
 
 add_action('admin_init', function() {
@@ -33,6 +34,8 @@ add_action('admin_init', function() {
 add_action('after_setup_theme', function() {
 	add_theme_support('title-tag'); // Support <title> by default
 
+	$base_font = "'Open Sans', Helvetica, sans-serif";
+
 	$defaults = array(
 		'primary_color' => '#555555',
 		'primary_text_color' => 'white',
@@ -41,11 +44,18 @@ add_action('after_setup_theme', function() {
 		'secondary_text_color' => 'white',
 
 		'accent_color' => '#664E39',
-		'accent_text_color' => '#F8C41C'
+		'accent_text_color' => '#F8C41C',
+
+		'base_font' => $base_font,
+		'base_font_size' => '18px',
+		'base_line_height' => '1.5em',
+
+		'display_font' => $base_font
 	);
 	$GLOBALS['basset_defaults'] = apply_filters('basset/defaults', $defaults);
 });
 
+// Defaults get passed through theme_mods first to see if there is a replacement value
 add_filter('less_vars', function($vars) {
 	global $basset_defaults;
 	if (!empty($basset_defaults)) {
@@ -76,5 +86,19 @@ function basset_get_default($key = '') {
 		$val = $basset_defaults[$key];
 		return $val;
 	}
+}
+
+// Converts an associative array into a style="" string
+function basset_get_style_attr($styles = array()) {
+	if (!empty($styles)) {
+		$strings = array();
+		foreach($styles as $property => $value) {
+			$strings[] = "$property: $value";
+		}
+		$string = implode('; ', $strings);
+		$string = "style='$string'";
+		return $string;
+	}
+	return;
 }
 ?>

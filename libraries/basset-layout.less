@@ -38,32 +38,44 @@ body.page-template-location {
 			}
 			.details-area {
 				display: none;
+				.column(12);
 
 				#location-photo {
-					.column(5);
 					background:#eee;
+					position:relative;
+					max-width:350px;
+					margin-left:auto;
+					margin-right:auto;
+
+					&:before {
+						display:block;
+						content: "";
+						padding-top:100%;
+					}
+
+					& > div {
+						position:absolute;
+						top:0px;
+						left:0px;
+						right:0px;
+						bottom:0px;
+					}
 
 					@media screen and (min-width: @iphone_6plus_landscape) {
 						& {
-							.column(12);
 							margin-bottom: 20px;
 						}
 					}
 				}
+
 				.location-details {
-					.column(7);
+					display:none;
 
 					.location-phones {
 						margin: 12px 0px;
 					}
 					.location-hours {
 						margin: 12px 0px;
-					}
-
-					@media screen and (min-width: @iphone_6plus_landscape) {
-						& {
-							.column(12);
-						}
 					}
 				}
 
@@ -73,6 +85,10 @@ body.page-template-location {
 						display: block;
 						.column(5);
 						padding-top:27px;
+
+						.location-details {
+							display:block;
+						}
 					}
 				}
 				@media screen and (min-width: 992px) {

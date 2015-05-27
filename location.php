@@ -10,9 +10,7 @@ get_header();
 <main class="basset-container">
 	<div class="layout-row">
 		<div class="details-area">
-			<div id="location-photo" data-aspect-ratio="square">
-				<div></div>
-			</div>
+			<? get_template_part('template_parts/location-photo') ?>
 			<div class="location-details">
 				<div class="location-name"><?=basset_get('location_name')?></div>
 
@@ -25,8 +23,9 @@ get_header();
 				<div class="location-phones">
 					<? foreach($phones as $phone) {
 						if ($type = $phone['type']) $type = "$type: ";
+						$link = do_shortcode('[basset_phone phone_number="' . $phone['number'] . '"]' );
 					?>
-					<div><?=$type?><?=$phone['number']?></div>
+					<div><?=$type?><?=$link?></div>
 					<? } ?>
 				</div>
 				<? } ?>
