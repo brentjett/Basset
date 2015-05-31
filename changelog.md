@@ -1,7 +1,7 @@
 # Change Log
 
 ## 0.9.12
-* testing folder copy script
+* Split config library into separate repo. Adds caching to protect from json errors.
 
 ## 0.9.11
 * Updates to default less variables

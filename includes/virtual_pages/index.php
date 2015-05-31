@@ -43,7 +43,7 @@ add_filter('the_posts', function($posts) {
 
         $title = 'Style Guide';
         ob_start();
-        require get_template_directory() . '/styleguide/main.php';
+        require 'styleguide-main.php';
         $content = ob_get_clean();
 
         $p = new stdClass;
