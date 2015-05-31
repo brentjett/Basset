@@ -5,7 +5,7 @@
 require_once 'includes/required_plugins/index.php'; // Require Plugins using TGM library
 require_once 'includes/updater/index.php'; // WP-Updates.com updates
 require_once 'includes/less/index.php'; // Less Compiler
-require_once 'includes/theme_config_lib/index.php'; // Read theme config files
+require_once 'includes/config/index.php'; // Read theme config files
 require_once 'includes/acf/index.php'; // Extend Advanced Custom Fields Plugin
 require_once 'includes/components/index.php'; // Shortcodes
 require_once 'includes/templates/index.php'; // Template script/style enqueue library

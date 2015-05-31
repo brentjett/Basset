@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 Add .less file support to wp_enqueue_style()
 */
@@ -37,4 +37,11 @@ add_filter('less_compression', function($compression) {
 
 
 //add_filter('less_save_css', function($css_path = '', $file_contents = '') { });
+
+/*
+add_filter('style_loader_src', function($path, $handle) {
+
+	return $src;
+}, 10, 2);
+*/
 ?>
