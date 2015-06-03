@@ -53,6 +53,8 @@ add_action('after_setup_theme', function() {
 		'display_font' => $base_font
 	);
 	$GLOBALS['basset_defaults'] = apply_filters('basset/defaults', $defaults);
+
+	add_image_size('location-photo-square', 350, 350, true);
 });
 
 // Defaults get passed through theme_mods first to see if there is a replacement value
