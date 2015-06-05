@@ -5,15 +5,15 @@ Implments wp-theme-config library.
 */
 require_once 'wp-theme-configuration/index.php';
 
+/*
+Configure the theme config API
 
-// Setup the global var to hold the config object
-add_action('after_setup_theme', function() {
-
-	$basset_theme_config_paths = apply_filters('basset/config_paths', array(get_stylesheet_directory() . '/config.json'));
-	$GLOBALS['basset_theme_config_paths'] = $basset_theme_config_paths;
-
-	foreach($basset_theme_config_paths as $path) {
-		basset_config($path);
-	}
+API accepts file paths to look for config files.
+*/
+add_filter('config/paths', function($paths) {
+	global $basset;
+	$paths = apply_filters('basset/theme_config_paths', array(get_stylesheet_directory() . '/config.json'));
+	$basset->config_paths = $paths; // for inspector
+	return $paths;
 });
 ?>

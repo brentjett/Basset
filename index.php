@@ -9,7 +9,7 @@ get_header();
 <main class="basset-container narrow">
 	<?
 	if (apply_filters('basset/show_title', true)) {
-		print "<h1>" . _e('Blog', 'basset') . "</h1>";
+		print "<h1>" . __('Blog', 'basset') . "</h1>";
 	}
 	?>
 
@@ -45,7 +45,7 @@ get_header();
 	</div>
 	<? } ?>
 </main>
-<?
+<?php
 get_footer();
 get_template_part('foot');
 ?>

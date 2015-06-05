@@ -1,6 +1,11 @@
 <?php
+/*
+Basset Foundation Theme
+*/
 
-// if the config.json file is somewhere other than in the root of the theme, define BASSET_CONFIG_PATH with the path including the filename before including the theme_config_lib index file.
+// Manager class to help store state for shared elements
+require_once 'includes/Basset.class.php';
+$basset = Basset::instance();
 
 require_once 'includes/required_plugins/index.php'; // Require Plugins using TGM library
 require_once 'includes/updater/index.php'; // WP-Updates.com updates
@@ -9,6 +14,7 @@ require_once 'includes/config/index.php'; // Read theme config files
 require_once 'includes/acf/index.php'; // Extend Advanced Custom Fields Plugin
 require_once 'includes/components/index.php'; // Shortcodes
 require_once 'includes/templates/index.php'; // Template script/style enqueue library
+require_once 'includes/inspector/index.php'; // Theme Inspector UI
 
 require_once 'includes/virtual_pages/index.php'; // Register styleguides and other static pages
 
@@ -19,12 +25,13 @@ if (!defined('DISALLOW_FILE_EDIT')) {
 }
 
 add_action('wp_enqueue_scripts', function() {
+
 	// Layout.less is registered and enqueued by templates
 	wp_register_style('basset-layouts', get_template_directory_uri() . '/libraries/basset-layout.less', array('open-sans', 'dashicons'));
 
 	// Content.less is enqueued in both the front side and the editor
 	wp_enqueue_style('basset-content', get_template_directory_uri() . '/libraries/basset-content.less', array('open-sans', 'dashicons'));
-	wp_enqueue_script('basset-content', get_template_directory_uri() . '/libraries/basset-content.js', array('jquery'));
+	//wp_enqueue_script('basset-content', get_template_directory_uri() . '/libraries/basset-content.js', array('jquery'));
 });
 
 add_action('admin_init', function() {

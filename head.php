@@ -12,8 +12,8 @@ Description: This template part is the clean opening of the dom intended for all
 <head>
 	<? wp_head() ?>
 </head>
-<body <?body_class()?>>
-<? 
+<body <?php body_class() ?>>
+<?php
 do_action('neh_after_body_open');
 do_action('basset/before_body_content');
 ?>

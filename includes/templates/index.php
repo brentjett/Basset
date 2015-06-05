@@ -1,5 +1,6 @@
 <?php
 
+/* Moved to template inspector
 add_action( 'wp_before_admin_bar_render', function() {
 	global $wp_admin_bar, $template;
 
@@ -12,6 +13,7 @@ add_action( 'wp_before_admin_bar_render', function() {
 		$wp_admin_bar->add_menu( $args );
 	}
 });
+*/
 
 // Template Enqueue Concept
 // Initial support for wrapper templates and enqueuing scripts and stylesheets from template comments
@@ -29,7 +31,7 @@ add_filter('basset/enqueue_template', function($template) {
 		'part_name' => 'Template Part Name',
 		'name' => 'Name',
 		'description' => 'Description',
-		'styles' => 'Stylesheets', 
+		'styles' => 'Stylesheets',
 		'scripts' => 'Scripts'
 	));
 
@@ -74,7 +76,7 @@ function basset_enqueue_template_part($slug, $name = '') {
 	// Determine the file (same way WordPress does). $load = false, $require_once = false
 	$template = locate_template($templates, false, false);
 	$template = apply_filters('basset/enqueue_template', $template);
-	
+
 	return $template;
 }
 // Setup to watch template parts
@@ -121,16 +123,16 @@ function basset_enqueue_template($template) {
 	//global $template_stack;
 	if (file_exists($template)) {
 		$headers = get_file_data($template, array(
-			'template' => 'Template Name', 
-			'styles' => 'Styles', 
-			'scripts' => 'Scripts', 
+			'template' => 'Template Name',
+			'styles' => 'Styles',
+			'scripts' => 'Scripts',
 			'wrapper' => 'Wrapper Template'
 		));
 
 		// if there are stylessheets
 		// if there are scripts
 
-		
+
 		if ($wrapper = $headers['wrapper']) {
 			$template_stack[] = $template;
 
