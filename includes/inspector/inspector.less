@@ -31,16 +31,50 @@ body {
         right:0px;
         bottom:0px;
         width:100vw;
-        overflow:auto;
+        overflow:hidden;
 
         transform: translateX(100vw);
         transition: transform @transition_speed, width @transition_speed;
+
+        .back-panel-button {
+            padding:8px 15px;
+            padding-right:30px;
+            color:white;
+            cursor: pointer;
+            font-size:18px;
+
+            &:before {
+                content: "\2190 ";
+            }
+        }
+
+        & .inspector-panel {
+            position:absolute;
+            height:100%;
+            width:100%;
+            box-sizing:border-box;
+            transition: transform @transition_speed;
+            pointer-events: none;
+            overflow:auto;
+
+            &.staged {
+                transform: translateX(100%);
+            }
+            &.active {
+                pointer-events:auto;
+                transform: translateX(0px);
+            }
+            &.stacked {
+                transform: translateX(-100%);
+            }
+        }
 
         & .inspector-section {
             margin-bottom:7px;
 
             .section-title {
                 padding:8px 15px;
+                padding-right:30px;
                 font-size:18px;
                 overflow:hidden;
 
@@ -56,6 +90,7 @@ body {
                 color:#96A5B3;
                 overflow:hidden;
                 padding:20px;
+                padding-right:30px;
 
                 &.padless { padding:0px; }
 
@@ -68,6 +103,7 @@ body {
                     tr {
                         td {
                             padding:6px 10px;
+                            padding-right:30px;
                             border-bottom:1px solid #323B43;
 
                             &:first-child {
@@ -84,6 +120,35 @@ body {
                                 padding-bottom:0px;
                                 border-bottom:none;
                             }
+                        }
+                    }
+                }
+
+                ul {
+                    list-style: none;
+                    margin:15px 0px 15px 20px;
+                    padding:0px;
+
+                    li {
+
+                        &:last-child {
+                            a {
+                                border:none;
+                            }
+                        }
+
+                        a {
+                            display:block;
+                            color:inherit;
+                            padding:6px 10px;
+                            padding-left:0px;
+                            border-bottom:1px solid #323B43;
+                            text-decoration: none;
+                        }
+
+                        ul {
+                            margin-top:0px;
+                            margin-bottom:0px;
                         }
                     }
                 }
@@ -125,7 +190,7 @@ body {
         @media screen and (min-width:@wp_admin_bar_size_change) {
             & {
                 top: @wp_admin_bar_desktop_height;
-                transform: translateX(@sidebar_width);
+                transform: translateX(100%);
                 width:@sidebar_width;
             }
         }

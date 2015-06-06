@@ -4,6 +4,7 @@ class Basset {
     protected static $instance = null;
 
     private $issues = array();
+    public $errors = array();
 
     public static function instance() {
         null === self:: $instance AND self:: $instance = new self;

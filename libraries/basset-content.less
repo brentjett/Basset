@@ -78,16 +78,66 @@
     .basset-section();
 }
 
+@default_box_color: #ffffff;
 
 body {
 	font-size:18px;
+	font-family:Open Sans, sans-serif;
 }
+
+.basset-container {
+	padding-top:5vw;
+	padding-bottom:5vw;
+}
+
+// Default article styles
+.type-post,
+.type-page,
+.type-attachment {
+	background:@default_box_color;
+	padding:2vw;
+	margin:2vw 0px;
+	.clearfix();
+	word-wrap: break-word;
+	line-height:1.6em;
+}
+
+// Hide Screen Reader Text - See Pagination
+.says, .screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+}
+.nav-links {
+	text-align:center;
+
+	.page-numbers {
+		display:inline-block;
+		box-sizing:border-box;
+		padding:1vw;
+		background:@default_box_color;
+	}
+}
+
+
+// Basic HTML Primitives
 h1 {
     color:@primary_color;
+	margin-top:0px;
 }
 h2, h3, h4, h5, h6 {
     color:@secondary_color;
+	margin-top:0px;
 }
+h1, h2, h3, h4, h5, h6 {
+	a {
+		text-decoration:none;
+		color:inherit;
+	}
+}
+
 
 a {
     color: @accent_color;
@@ -109,12 +159,7 @@ a {
 .gallery {
 	margin-left: -0.5em;
 	margin-right: -0.5em;
-
-	:after {
-		display: table;
-		content: "";
-		clear: both;
-	}
+	.clearfix();
 
 	.gallery-item {
 		margin: 0;
