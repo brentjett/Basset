@@ -1,7 +1,7 @@
 # Basset Foundation Theme
 This is a parent theme for WordPress that adds quick configuration and a built-in LESS compiler.
 
-**Version:** 0.9.11
+**Version:** 0.9.13
 **Requires at least:** WordPress 4.0  
 **Tested On:** 4.2.2
 

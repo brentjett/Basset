@@ -99,6 +99,10 @@ body {
 
                 &.padless { padding:0px; }
 
+                .padded {
+                    padding:20px;
+                }
+
                 table {
                     border-collapse: collapse;
                     margin:15px 20px 15px 20px;
@@ -123,7 +127,7 @@ body {
                             }
                         }
                         &:first-child {
-                            td {
+                            & > th {
                                 padding-top:0px;
                             }
                         }
@@ -132,6 +136,39 @@ body {
                                 padding-bottom:0px;
                                 border-bottom:none;
                             }
+                        }
+                    }
+
+                    // Property List Tables
+                    &.property_list {
+                        tr {
+                            &:hover {
+                                background-color: darken(@inspector_section_background_color, 5%);
+                            }
+                            td {
+                                cursor:pointer;
+
+                                .dashicons-arrow-right {
+                                    display:none;
+                                }
+                            }
+                            &[data-is-collection="true"] td {
+                                .dashicons-arrow-right {
+                                    display:inline-block;
+                                }
+                            }
+                            &:not([data-level="0"]) {
+                                display:none;
+                            }
+                            &.property-expanded-row {
+                                td:first-child {
+                                    padding-left:20px !important;
+                                }
+                            }
+                            &[data-level="1"] td:first-child { padding-left:20px; }
+                            &[data-level="2"] td:first-child { padding-left:40px; }
+                            &[data-level="3"] td:first-child { padding-left:60px; }
+                            &[data-level="4"] td:first-child { padding-left:80px; }
                         }
                     }
                 }

@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.9.13
+* Introduce theme inspector panel. Click "Inspect Theme" in the admin bar to see an console of helper UI
+* Updates config API with extensibility. See filter: basset/theme_config/{key}.
+
 ## 0.9.12
 * Split config library into separate repo. Adds caching to protect from json errors.
 

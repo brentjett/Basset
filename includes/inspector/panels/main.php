@@ -33,9 +33,31 @@ $template_name = basename($template);
                         <td>Template</td>
                         <td><?php print $theme_name ?> > <?php print $template_name?></td>
                     </tr>
+                    <tr>
+                        <td>Basset Object</td>
+                        <td data-display-inspector-panel="basset-object-panel">Inspect &rarr;</td>
+                    </tr>
                 </tbody>
             </table>
         </div><!-- .section-content -->
+        <div class="section-footer"></div>
+    </div>
+
+    <div class="inspector-section">
+        <div class="section-title"><span class="dashicons dashicons-admin-tools"></span> Configuration <span class="actions" data-set-inspector-size="650">Expand</span></div>
+        <div class="section-content padless">
+            <div class="padded" style="padding-bottom:0px;">
+            <?
+            global $basset;
+            if ($basset->config_paths) {
+                foreach($basset->config_paths as $path) {
+                    ?><div><? print $path?></div><?
+                }
+            }
+            ?></div><?
+            basset_print_property_list("config_property_list", $basset->config_data);
+            ?>
+        </div>
         <div class="section-footer"></div>
     </div>
 
@@ -46,20 +68,6 @@ $template_name = basename($template);
                 <li data-display-inspector-panel="nav-panel">Pages</li>
             </ul>
         </div>
-    </div>
-
-    <div class="inspector-section">
-        <div class="section-title"><span class="dashicons dashicons-admin-tools"></span> Configuration <span class="actions">Edit</span></div>
-        <div class="section-content">
-            <?
-            if ($basset->config_paths) {
-                foreach($basset->config_paths as $path) {
-                    ?><div><? print $path?></div><?
-                }
-            }
-            ?>
-        </div>
-        <div class="section-footer"></div>
     </div>
 
     <? if ($errors = $basset->errors) { ?>

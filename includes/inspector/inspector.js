@@ -2,7 +2,7 @@ $ = jQuery.noConflict();
 $(document).ready(function() {
 
     // TEMP: Show inspect
-    //$("body").addClass('show_basset_inspector');
+    $("body").addClass('show_basset_inspector');
 
     // Toggle show inspector
     $("#wp-admin-bar-basset_inspector").on('click', function() {
@@ -26,6 +26,33 @@ $(document).ready(function() {
     });
     $('[data-pop-inspector-panel]').on('click', function() {
         pop_inspector_panel();
+    });
+
+    // Toggle property list item
+    $('.property_list tr[data-is-collection="true"]').on('click', function() {
+        // show child content in next row
+        var id = $(this).prop('id');
+        var subrows = $('[data-parent="' + id + '"]');
+
+        $(this).toggleClass('expanded');
+        $(this).find('.basset-property-list-key span.dashicons').toggleClass('dashicons-arrow-right').toggleClass('dashicons-arrow-down');
+
+        $.each(subrows, function(i) {
+            $(this).toggle();
+        });
+    });
+
+    $('[data-set-inspector-size]').on('click', function() {
+        var orig_text = $(this).text();
+        var size = $(this).data('set-inspector-size');
+        set_inspector_width(size);
+
+        // And click to go back
+        $(this).data('set-inspector-size', 'reset').text('reset').on('click', function() {
+            reset_inspector_width();
+            console.log('reset inspector', orig_text, size);
+            $(this).text(orig_text).data('set-inspector-size', size);
+        });
     });
 });
 
@@ -60,9 +87,18 @@ function pop_inspector_panel() {
 
     var new_width = last_panel.data('panel-width');
     if (new_width) {
-        console.log('change width to', new_width);
-        $('#basset_theme_inspector').css('width', new_width);
+        set_inspector_width(new_width);
+    } else {
+        reset_inspector_width();
+    }
+}
+function set_inspector_width(value) {
+    if (value) {
+        $('#basset_theme_inspector').css('width', value);
     } else {
         $('#basset_theme_inspector').css('width', "");
     }
+}
+function reset_inspector_width() {
+    set_inspector_width();
 }
