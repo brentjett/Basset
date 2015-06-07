@@ -6,6 +6,10 @@ Basset Theme Inspector Styling
 
 @sidebar_width: 380px;
 @transition_speed: .15s;
+@wp_admin_bar_background_color: #23282D;
+@inspector_section_background_color: darken(@wp_admin_bar_background_color, 3%);
+@inspector_section_color: #96A5B3;
+@seperator_color: lighten(@inspector_section_background_color, 10%);
 
 body {
     transition: margin-right @transition_speed;
@@ -24,7 +28,7 @@ body {
         font-weight:100;
         font-size: 12px;
         color:#667380;
-        background:#23282D;
+        background:@wp_admin_bar_background_color;
 
         position:fixed;
         top:@wp_admin_bar_mobile_height;
@@ -71,6 +75,7 @@ body {
 
         & .inspector-section {
             margin-bottom:7px;
+            font-size:1em;
 
             .section-title {
                 padding:8px 15px;
@@ -86,8 +91,8 @@ body {
                 }
             }
             .section-content {
-                background: #1C2125;
-                color:#96A5B3;
+                background: @inspector_section_background_color;
+                color:@inspector_section_color;
                 overflow:hidden;
                 padding:20px;
                 padding-right:30px;
@@ -99,15 +104,22 @@ body {
                     margin:15px 20px 15px 20px;
                     width:100%;
                     box-sizing:border-box;
+                    font-size:1em;
 
                     tr {
-                        td {
+                        th {
+                            text-align:left;
+                        }
+                        th, td {
                             padding:6px 10px;
-                            padding-right:30px;
-                            border-bottom:1px solid #323B43;
+                            border-bottom:1px solid @seperator_color;
+                            color:@inspector_section_color;
 
                             &:first-child {
                                 padding-left:0px;
+                            }
+                            &:last-child {
+                                padding-right:30px;
                             }
                         }
                         &:first-child {
@@ -142,8 +154,9 @@ body {
                             color:inherit;
                             padding:6px 10px;
                             padding-left:0px;
-                            border-bottom:1px solid #323B43;
+                            border-bottom:1px solid @seperator_color;
                             text-decoration: none;
+                            font-size:1em;
                         }
 
                         ul {

@@ -70,7 +70,7 @@ $template_name = basename($template);
                 <tbody>
                 <? foreach($errors as $error) { ?>
                     <tr>
-                        <td><? print $error['type'] ?></td>
+                        <td><?php print $error['icon']?></td>
                         <td><? print $error['message'] ?></td>
                     </tr>
                 <? } ?>

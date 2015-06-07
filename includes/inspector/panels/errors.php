@@ -7,13 +7,21 @@
         <div class="section-content padless">
             <? if ($errors = $basset->errors) { ?>
             <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Message</th>
+                        <th>File</th>
+                        <th>Line</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <? foreach($errors as $error) { ?>
                     <tr>
-                        <td><? print $error['type'] ?></td>
-                        <td><? print $error['message'] ?></td>
-                        <td><? print $error['file'] ?></td>
-                        <td><? print $error['line_number'] ?></td>
+                        <td><?php print $error['icon']?></td>
+                        <td><?php print $error['message'] ?></td>
+                        <td><?php print $error['file'] ?></td>
+                        <td><?php print $error['line_number'] ?></td>
                     </tr>
                     <? } ?>
                 </tbody>

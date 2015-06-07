@@ -5,14 +5,15 @@ Basset Theme Inspector library
 This library specifies an "Inspect Theme" Admin Bar item that triggers a dialog to see various parts of the current theme.
 */
 
+// Add inspector libraries
 add_action('wp_enqueue_scripts', function() {
     if (can_inspect()) {
-
         wp_enqueue_style('basset-inspector', get_template_directory_uri() . '/includes/inspector/inspector.less', array('open-sans', 'dashicons'));
         wp_enqueue_script('basset-inspector', get_template_directory_uri() . '/includes/inspector/inspector.js', array('jquery'), false, true);
     }
 }, 20);
 
+// "Inspect Theme" Admin Bar Item - Triggers the inspector panel to show
 add_action( 'wp_before_admin_bar_render', function() {
 	global $wp_admin_bar;
     if (can_inspect()) {
@@ -26,6 +27,13 @@ add_action( 'wp_before_admin_bar_render', function() {
     }
 });
 
+// Test if a user should see the inspector
+function can_inspect() {
+    if (is_user_logged_in() && current_user_can('install_themes')) return true;
+    return false;
+}
+
+// Setup custom error handler
 function basset_error_handler($number, $message, $file, $line_number, $context = array()) {
     global $basset;
 
@@ -35,9 +43,16 @@ function basset_error_handler($number, $message, $file, $line_number, $context =
     $types[4] = "Parse";
     $types[8] = "Notice";
 
+    $icons = array();
+    $icons[1] = '<span class="dashicons dashicons-dismiss"></span>';
+    $icons[2] = '<span class="dashicons dashicons-dismiss"></span>';
+    $icons[4] = '<span class="dashicons dashicons-dismiss"></span>';
+    $icons[8] = '<span class="dashicons dashicons-info"></span>';
+
     $error = array(
         'number' => $number,
         'type' => $types[$number],
+        'icon' => $icons[$number],
         'message' => $message,
         'file' => $file,
         'line_number' => $line_number,
@@ -50,26 +65,20 @@ function basset_error_handler($number, $message, $file, $line_number, $context =
 }
 set_error_handler('basset_error_handler');
 
+// Print inspector DOM in wp_footer
 add_action('wp_footer', function() {
 
     if (can_inspect()) {
         ?>
         <div id="basset_theme_inspector">
-
             <?php
             require_once 'panels/main.php';
             require_once 'panels/errors.php';
             require_once 'panels/nav.php';
+            do_action('basset/inspector/panels');
             ?>
-
-        </div>
+        </div><!-- / #basset_theme_inspector -->
         <?php
     }
 });
-
-function can_inspect() {
-    if (is_user_logged_in() && current_user_can('install_themes')) return true;
-    return false;
-}
-
 ?>
